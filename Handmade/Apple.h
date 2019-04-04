@@ -1,13 +1,17 @@
 #pragma once
 #include "GameObject.h"
 
+#include <glm.hpp>
+#include <cstdlib> 
+#include <ctime> 
+#include <math.h>
+#include <iostream>
+
+#include "ScreenManager.h"
 #include "TextureManager.h"
 #include "Sprite.h"
 #include "Sphere.h"
 
-#include <glm.hpp>
-#include <math.h>
-#include <iostream>
 
 class Apple : public GameObject
 {
@@ -30,7 +34,6 @@ private:
 	std::string m_textureTag;
 
 	Sphere m_bound;
-
 
 };
 

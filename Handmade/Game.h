@@ -28,7 +28,7 @@ public:
 
 private:
 
-	Game() {};
+	Game();
 	Game(const Game & copyGame);
 	Game & operator=(const Game & copyGame);
 

@@ -2,6 +2,10 @@
 
 #include "Game.h"
 
+MenuState::MenuState()
+{
+}
+
 MenuState::MenuState(GameState * prevState)
 {
 	m_previousState = prevState;
@@ -31,6 +35,8 @@ void MenuState::Update()
 		temp->Load();
 
 		TheGame::Instance()->ChangeState(temp);
+
+		temp = nullptr;
 		m_isAlive = false;
 		m_isActive = false;
 	}

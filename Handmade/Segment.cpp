@@ -2,6 +2,51 @@
 
 int Segment::s_totalSegments = 0;
 
+Segment::Segment()
+{
+	if (s_totalSegments == 0)
+	{
+		TheTexture::Instance()->LoadTextureFromFile("Assets/Sprites/SnakeSegment.png", "SEGMENT");
+	}
+
+	// create a texture with random segment textures
+
+	if (s_totalSegments == 0)
+	{
+		m_tag = "SEGMENT_HEAD";
+
+		m_position = glm::vec3(TheInput::Instance()->GetMousePosition(), 0.0f);
+
+		m_layer = 0.0f;
+	}
+	else
+	{
+		m_tag = "SEGMENT_BODY";
+		m_position = glm::vec3(0.0f);
+
+		m_layer = 1.0f;
+	}
+
+	m_textureTag = "SEGMENT";
+	m_texture.SetTexture("SEGMENT");
+
+	m_size = glm::vec2(40.0f);
+	m_textureSize = glm::vec2(500.0f);
+
+	m_texture.SetSpriteDimension((int)m_size.x, (int)m_size.y);
+
+	m_texture.SetTextureDimension(1, 1, 500, 500);
+
+	m_speed = 8.0f;
+
+	s_totalSegments++;
+
+	m_isVisible = true;
+
+	std::cout << "Segment created\n";
+	std::cout << "---------------------------------------------------------------\n";
+}
+
 Segment::Segment(glm::vec3 position)
 {
 	if (s_totalSegments == 0)
@@ -30,7 +75,8 @@ Segment::Segment(glm::vec3 position)
 	m_textureTag = "SEGMENT";
 	m_texture.SetTexture("SEGMENT");
 
-	m_size = glm::vec2(20.0f, 20.0f);
+	m_size = glm::vec2(40.0f);
+	m_textureSize = glm::vec2(500.0f);
 	m_texture.SetSpriteDimension((int)m_size.x, (int)m_size.y);
 
 	m_texture.SetTextureDimension(1, 1, 500, 500);
@@ -41,16 +87,15 @@ Segment::Segment(glm::vec3 position)
 
 	m_isVisible = true;
 
-	std::cout << "---------------------------------------------------------------\n";
 	std::cout << "Segment created\n";
-	std::cout << "---------------------------------------------------------------\n";
+	std::cout << "---------------------------------------------------------------" << std::endl;
+
 }
 
 Segment::~Segment()
 {
-	std::cout << "---------------------------------------------------------------\n";
 	std::cout << "Segment destroyed\n";
-	std::cout << "---------------------------------------------------------------\n";
+	std::cout << "---------------------------------------------------------------" << std::endl;
 
 	s_totalSegments--;
 }
@@ -108,6 +153,11 @@ void Segment::Move(const glm::vec2 & position)
 Sphere Segment::GetBound() const
 {
 	return m_bound;
+}
+
+glm::vec2 Segment::GetSize() const
+{
+	return m_size;
 }
 
 void Segment::SetSpeed(const float speed)

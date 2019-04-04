@@ -4,7 +4,8 @@
 class GameState
 {
 public:
-	GameState(GameState * prevState = nullptr) {};
+	GameState() {};
+	GameState(GameState * prevState) {};
 	virtual ~GameState() = 0 {};
 	
 	virtual void Load() = 0;

@@ -21,7 +21,7 @@ int main(int argc, char* args[])
 	temp->Load();
 	TheGame::Instance()->AddState(temp);
 
-	
+	temp = nullptr;
 	while (TheGame::Instance()->Run());
 
 	TheGame::Instance()->Shutdown();

@@ -1,29 +1,30 @@
 #ifndef PLAYSTATE_H
 #define PLAYSTATE_H
 
-//#include "SFX.h"
-//#include "Text.h"
-//#include "Audio.h"
-//#include "Sprite.h"
-//#include "Animation.h"
+#include <SDL.h>
+#include <iostream>
+
+#include <vector>
+#include <gtc/random.hpp>
+#include <algorithm>
+
 #include "InputManager.h"
 #include "AudioManager.h"
 #include "TextureManager.h"
 
-
-#include <SDL.h>
-#include <iostream>
+#include "GameState.h"
 
 //#include "Background.h"
 #include "Segment.h"
-#include "GameState.h"
+#include "Apple.h"
 
-#include <vector>
+#include "Text.h"
 
 class PlayState : public GameState
 {
 public:
-	PlayState(GameState * prevState = nullptr);
+	PlayState();
+	PlayState(GameState * prevState);
 	virtual ~PlayState();
 
 	virtual void Load();
@@ -36,6 +37,12 @@ private:
 	glm::vec2 m_mousePos;
 
 	std::vector<Segment*> m_segments;
+
+	Apple m_apple;
+
+	int m_score;
+
+	Text m_scoreDisplay;
 };
 
 #endif // !PLAYSTATE_H

@@ -15,7 +15,8 @@
 class MenuState : public GameState
 {
 public:
-	MenuState(GameState * prevState = nullptr);
+	MenuState();
+	MenuState(GameState * prevState);
 	virtual ~MenuState();
 
 	virtual void Load();

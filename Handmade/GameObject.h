@@ -35,15 +35,15 @@ private:
 protected:
 	// https://www.browserling.com/tools/line-length-sort
 
-	float m_angle;
-	std::string m_tag;
-	glm::vec3 m_position;
+	float m_angle = 0.0f;
+	std::string m_tag = "N/A";
+	glm::vec3 m_position = glm::vec3(0.0f);
 
-	float m_layer;
+	float m_layer = 0.0f;
 	
-	bool m_isAlive;
-	bool m_isActive;
-	bool m_isVisible;
+	bool m_isAlive = false;
+	bool m_isActive = false;
+	bool m_isVisible = false;
 };
 
 #endif // !GAMEOBJECT_H

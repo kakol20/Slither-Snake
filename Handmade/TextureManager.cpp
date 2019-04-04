@@ -131,6 +131,8 @@ void TextureManager::UnloadFromMemory(DataType dataType,
 			if (it == m_fontMap.end())
 			{
 				std::cout << "Font data not found." << std::endl;
+				std::cout << "---------------------------------------------------------------" << std::endl;
+
 			}
 
 			else
@@ -166,6 +168,8 @@ void TextureManager::UnloadFromMemory(DataType dataType,
 			if (it == m_textureMap.end())
 			{
 				std::cout << "Texture data not found or already have been deleted." << std::endl;
+				std::cout << "---------------------------------------------------------------" << std::endl;
+
 			}
 
 			else

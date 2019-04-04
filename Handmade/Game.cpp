@@ -1,5 +1,10 @@
 #include "Game.h"
 
+Game::Game()
+{
+	m_deltaTime = 0.0f;
+}
+
 bool Game::Initialise(const std::string & name, int screenWidth, int screenHeight, bool fullscreen)
 {
 	//initialise game screen and background rendering color
@@ -65,6 +70,7 @@ bool Game::Run()
 
 	if (!m_states.front()->IsAlive())
 	{
+		m_states.front()->Unload();
 		RemoveState();
 	}
 

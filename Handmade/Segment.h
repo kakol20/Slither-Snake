@@ -2,20 +2,21 @@
 
 #include "GameObject.h"
 
+#include <glm.hpp>
+#include <math.h>
+#include <iostream>
+
 #include "Sprite.h"
 #include "TextureManager.h"
 #include "InputManager.h"
 
 #include "Sphere.h"
 
-#include <glm.hpp>
-#include <math.h>
-#include <iostream>
-
 class Segment : public GameObject
 {
 public:
-	Segment(glm::vec3 position = glm::vec3(0.0f));
+	Segment();
+	Segment(glm::vec3 position);
 	virtual ~Segment();
 
 	virtual void Update();
@@ -25,6 +26,8 @@ public:
 	void Move(const glm::vec2 & position);
 
 	Sphere GetBound() const;
+
+	glm::vec2 GetSize() const;
 
 	void SetSpeed(const float speed);
 
