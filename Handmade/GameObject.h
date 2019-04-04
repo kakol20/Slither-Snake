@@ -21,8 +21,9 @@ public:
 	void SetVisible(const bool isVisible) { m_isVisible = isVisible; };
 	void SetPosition(const float x, const float y, float z = 0) { m_position = glm::vec3(x, y, z); };
 
-	const std::string & GetTag() const { return m_tag; };
-	const glm::vec3 & GetPosition() const { return m_position; };
+	const float GetLayer() const { return m_layer; };
+	const std::string GetTag() const { return m_tag; };
+	const glm::vec3 GetPosition() const { return m_position; };
 	
 	bool isAlive() const { return m_isAlive; };
 	bool isActive() const { return m_isActive; };
@@ -37,6 +38,8 @@ protected:
 	float m_angle;
 	std::string m_tag;
 	glm::vec3 m_position;
+
+	float m_layer;
 	
 	bool m_isAlive;
 	bool m_isActive;

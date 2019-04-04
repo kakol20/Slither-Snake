@@ -20,21 +20,16 @@ bool Game::Initialise(const std::string & name, int screenWidth, int screenHeigh
 		return false;
 	}
 
-	//m_gameState.Load();
-
-	PLAY = new PlayState;
-	PLAY->Load();
-
-	MENU = new MenuState;
-	MENU->Load();
-
-	m_state = MENU;
+	//m_gameState.Load()
+	//m_states.front()->Load();
 
 	return true;
 }
 
 bool Game::Run()
 {
+	float startTime = (float)SDL_GetTicks();
+
 	//update screen by clearing SDL frame buffer
 	TheScreen::Instance()->Update();
 
@@ -54,26 +49,29 @@ bool Game::Run()
 		return false;
 	}
 
-	//if escape key is pressed flag game to end
-	if (keys[SDL_SCANCODE_ESCAPE])
-	{
-		return false;
-	}
-
 	// UPDATE AND DRAW
 
-	if (m_state == nullptr)
+	if (m_states.empty())
 	{
 		return false;
 	}
-	else
+
+  	if (m_states.front()->IsActive())
 	{
-		m_state->Update();
-		m_state->Draw();
+		m_states.front()->Update();
+	}
+
+	m_states.front()->Draw();
+
+	if (!m_states.front()->IsAlive())
+	{
+		RemoveState();
 	}
 
 	//draw screen by swapping SDL frame buffer
 	TheScreen::Instance()->Draw();
+
+	m_deltaTime = SDL_GetTicks() - startTime;
 
 	return true;
 }
@@ -81,20 +79,6 @@ bool Game::Run()
 void Game::Shutdown()
 {
 	//m_gameState.Unload();
-
-	if (PLAY != nullptr)
-	{
-		PLAY->Unload();
-		delete PLAY;
-		PLAY = nullptr;
-	}
-
-	if (MENU != nullptr)
-	{
-		MENU->Unload();
-		delete MENU;
-		MENU = nullptr;
-	}
 
 	// UNLOAD
 	TheAudio::Instance()->UnloadFromMemory(AudioManager::SFX_AUDIO, AudioManager::ALL_AUDIO);
@@ -110,5 +94,24 @@ void Game::Shutdown()
 
 	//close down game screen 
 	TheScreen::Instance()->ShutDown();
+}
 
+void Game::AddState(GameState * state)
+{
+	m_states.push_front(state);
+	//m_states.front()->Load();
+}
+
+void Game::ChangeState(GameState * state)
+{
+	m_states.push_back(state);
+	//m_states.back()->Load();
+}
+
+void Game::RemoveState()
+{
+	m_states.front()->Unload();
+	delete m_states.front();
+
+	m_states.pop_front();
 }

@@ -8,13 +8,14 @@
 #include "GameState.h"
 
 #include "Background.h"
+#include "PlayState.h"
 
 #include <vector>
 
 class MenuState : public GameState
 {
 public:
-	MenuState();
+	MenuState(GameState * prevState = nullptr);
 	virtual ~MenuState();
 
 	virtual void Load();

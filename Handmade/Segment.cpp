@@ -2,7 +2,7 @@
 
 int Segment::s_totalSegments = 0;
 
-Segment::Segment()
+Segment::Segment(glm::vec3 position)
 {
 	if (s_totalSegments == 0)
 	{
@@ -16,11 +16,15 @@ Segment::Segment()
 		m_tag = "SEGMENT_HEAD";
 
 		m_position = glm::vec3(TheInput::Instance()->GetMousePosition(), 0.0f);
+		
+		m_layer = 0.0f;
 	}
 	else
 	{
 		m_tag = "SEGMENT_BODY";
-		m_position = glm::vec3(0.0f);
+		m_position = position;
+
+		m_layer = 1.0f;
 	}
 
 	m_textureTag = "SEGMENT";
@@ -40,7 +44,6 @@ Segment::Segment()
 	std::cout << "---------------------------------------------------------------\n";
 	std::cout << "Segment created\n";
 	std::cout << "---------------------------------------------------------------\n";
-
 }
 
 Segment::~Segment()
@@ -48,6 +51,8 @@ Segment::~Segment()
 	std::cout << "---------------------------------------------------------------\n";
 	std::cout << "Segment destroyed\n";
 	std::cout << "---------------------------------------------------------------\n";
+
+	s_totalSegments--;
 }
 
 void Segment::Update()

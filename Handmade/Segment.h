@@ -1,5 +1,4 @@
-#ifndef SEGMENT_H
-#define SEGMENT_H
+#pragma once
 
 #include "GameObject.h"
 
@@ -16,7 +15,7 @@
 class Segment : public GameObject
 {
 public:
-	Segment();
+	Segment(glm::vec3 position = glm::vec3(0.0f));
 	virtual ~Segment();
 
 	virtual void Update();
@@ -43,6 +42,3 @@ private:
 
 	Sphere m_bound;
 };
-
-
-#endif // !SEGMENT_H

@@ -5,6 +5,10 @@
 
 #include "Game.h"
 
+#include "MenuState.h"
+
+#include <iostream>
+
 int main(int argc, char* args[])
 {
 
@@ -12,11 +16,18 @@ int main(int argc, char* args[])
 	{
 		return -1;
 	}
+
+	MenuState * temp = new MenuState;
+	temp->Load();
+	TheGame::Instance()->AddState(temp);
+
 	
 	while (TheGame::Instance()->Run());
 
 	TheGame::Instance()->Shutdown();
 
+
+	//system("pause");
 	//end application
 	return 0;
 

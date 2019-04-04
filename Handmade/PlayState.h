@@ -23,7 +23,7 @@
 class PlayState : public GameState
 {
 public:
-	PlayState();
+	PlayState(GameState * prevState = nullptr);
 	virtual ~PlayState();
 
 	virtual void Load();
