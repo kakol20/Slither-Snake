@@ -1,5 +1,5 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#pragma once
+
 
 #include <string>
 #include <glm.hpp>
@@ -45,5 +45,3 @@ protected:
 	bool m_isActive = false;
 	bool m_isVisible = false;
 };
-
-#endif // !GAMEOBJECT_H

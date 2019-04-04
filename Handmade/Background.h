@@ -1,5 +1,5 @@
-#ifndef BACKGROUND_H
-#define BACKGROUND_H
+#pragma once
+
 
 #include "GameObject.h"
 
@@ -40,6 +40,4 @@ private:
 	void SetAudio(const std::string & tag, Audio::AudioType audioType);
 
 };
-
-#endif // !BACKGROUND_H
 

@@ -31,11 +31,12 @@ void PlayState::Load()
 
 	m_isAlive = true;
 	m_isActive = true;
-	//m_isVisible = true
+
+	glm::vec2 middle = TheScreen::Instance()->GetScreenSize() / 2.0f;
 	// snake segment creation
 	for (int i = 0; i < 2; i++)
 	{
-		m_segments.push_back(new Segment);
+		m_segments.push_back(new Segment(glm::vec3(middle, 0.0f)));
 	}
 
 	// LOAD FONT
@@ -57,10 +58,6 @@ void PlayState::Update()
 	{
 		// Updating mouse information
 		m_mousePos = TheInput::Instance()->GetMousePosition();
-		/*if (TheInput::Instance()->GetLeftButtonState() == InputManager::DOWN)
-		{
-			m_mouseDown = true;
-		}*/
 
 		for (size_t i = 0; i < m_segments.size(); i++)
 		{
@@ -84,12 +81,28 @@ void PlayState::Update()
 		m_apple.Update();
 
 		// Checking collision with body
-		for (size_t i = 2; i < m_segments.size(); i++)
+
+		if (m_segments.size() >= 4)
 		{
-			if (m_segments.front()->GetBound().IsColliding(m_segments[i]->GetBound()))
+			for (size_t i = 3; i < m_segments.size(); i++)
 			{
-				m_isAlive = false;
+				if (m_segments.front()->GetBound().IsColliding(m_segments[i]->GetBound()))
+				{
+					m_isAlive = false;
+					m_isActive = false;
+				}
 			}
+		}
+
+		// check for game over
+		if (!m_isAlive)
+		{
+			EndState* temp = new EndState;
+			temp->Load();
+
+			TheGame::Instance()->ChangeState(temp);
+
+			temp = nullptr;
 		}
 
 		// Checking collision with apple
@@ -128,14 +141,6 @@ void PlayState::Draw()
 
 void PlayState::Unload()
 {
-	/*for (auto it = m_segments.begin(); it != m_segments.end(); it++)
-	{
-		if (*it != nullptr)
-		{
-			(*it)->Unload();
-			delete *it;
-		}
-	}*/
 	for (size_t i = 0; i < m_segments.size(); i++)
 	{
 		if (m_segments[i] != nullptr)

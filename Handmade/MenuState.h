@@ -1,5 +1,4 @@
-#ifndef MENUSTATE_H
-#define MENUSTATE_H
+#pragma once
 
 #include "InputManager.h"
 #include "AudioManager.h"
@@ -28,5 +27,3 @@ private:
 
 	Background m_background;
 };
-
-#endif // !MENUSTATE_H

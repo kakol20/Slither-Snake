@@ -1,5 +1,5 @@
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#pragma once
+
 
 class GameState
 {
@@ -23,11 +23,9 @@ public:
 	void setPreviousState(GameState * state) { m_previousState = state; };
 
 protected:
-	bool m_isAlive;
-	bool m_isActive;
+	bool m_isAlive = false;
+	bool m_isActive = false;
 	//bool m_isVisible;
 
-	GameState * m_previousState;
+	GameState* m_previousState = nullptr;
 };
-
-#endif // !GAMESTATE_H

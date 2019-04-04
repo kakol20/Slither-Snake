@@ -4,6 +4,9 @@
 
 MenuState::MenuState()
 {
+	m_previousState = nullptr;
+	m_isAlive = true;
+	m_isActive = true;
 }
 
 MenuState::MenuState(GameState * prevState)

@@ -1,5 +1,4 @@
-#ifndef PLAYSTATE_H
-#define PLAYSTATE_H
+#pragma once
 
 #include <SDL.h>
 #include <iostream>
@@ -13,6 +12,8 @@
 #include "TextureManager.h"
 
 #include "GameState.h"
+
+#include "EndState.h"
 
 //#include "Background.h"
 #include "Segment.h"
@@ -44,5 +45,3 @@ private:
 
 	Text m_scoreDisplay;
 };
-
-#endif // !PLAYSTATE_H

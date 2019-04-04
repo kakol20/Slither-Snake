@@ -70,7 +70,6 @@ bool Game::Run()
 
 	if (!m_states.front()->IsAlive())
 	{
-		m_states.front()->Unload();
 		RemoveState();
 	}
 
@@ -118,6 +117,7 @@ void Game::RemoveState()
 {
 	m_states.front()->Unload();
 	delete m_states.front();
+	m_states.front() = nullptr;
 
 	m_states.pop_front();
 }
