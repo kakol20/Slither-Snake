@@ -88,14 +88,14 @@ Segment::Segment(glm::vec3 position)
 	m_isVisible = true;
 
 	std::cout << "Segment created\n";
-	std::cout << "---------------------------------------------------------------" << std::endl;
+	//std::cout << "---------------------------------------------------------------" << std::endl;
 
 }
 
 Segment::~Segment()
 {
 	std::cout << "Segment destroyed\n";
-	std::cout << "---------------------------------------------------------------" << std::endl;
+	//std::cout << "---------------------------------------------------------------" << std::endl;
 
 	s_totalSegments--;
 }
@@ -158,6 +158,11 @@ Sphere Segment::GetBound() const
 glm::vec2 Segment::GetSize() const
 {
 	return m_size;
+}
+
+void Segment::SetSegmentCount(const int count)
+{
+	s_totalSegments = count;
 }
 
 void Segment::SetSpeed(const float speed)

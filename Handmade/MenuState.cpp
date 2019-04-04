@@ -20,6 +20,9 @@ MenuState::~MenuState()
 
 void MenuState::Load()
 {
+	std::cout << "\nLoading MenuState\n";
+	std::cout << "---------------------------------------------------------------" << std::endl;
+
 	m_background.Load("Assets/Textures/Menu.png", "MENU_BG", 1600, 900);
 	m_background.SetVisible(true);
 
@@ -59,5 +62,8 @@ void MenuState::Draw()
 
 void MenuState::Unload()
 {
+	std::cout << "\nUnloading MenuState\n";
+	std::cout << "---------------------------------------------------------------" << std::endl;
+
 	m_background.Unload();
 }

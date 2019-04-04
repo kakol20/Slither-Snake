@@ -54,7 +54,7 @@ bool TextureManager::LoadFontFromFile(const std::string& filename, int fontSize,
 	if (!font)
 	{
 		std::cout << "File could not be loaded." << std::endl;
-		std::cout << "---------------------------------------------------------------" << std::endl;
+		//std::cout << "---------------------------------------------------------------" << std::endl;
 		return false;
 	}
 
@@ -87,7 +87,7 @@ bool TextureManager::LoadTextureFromFile(const std::string& filename, const std:
 	if (!textureData)
 	{
 		std::cout << "File could not be loaded." << std::endl;
-		std::cout << "---------------------------------------------------------------" << std::endl;
+		//std::cout << "---------------------------------------------------------------" << std::endl;
 		return false;
 	}
 
@@ -131,7 +131,7 @@ void TextureManager::UnloadFromMemory(DataType dataType,
 			if (it == m_fontMap.end())
 			{
 				std::cout << "Font data not found." << std::endl;
-				std::cout << "---------------------------------------------------------------" << std::endl;
+				//std::cout << "---------------------------------------------------------------" << std::endl;
 
 			}
 
@@ -168,7 +168,7 @@ void TextureManager::UnloadFromMemory(DataType dataType,
 			if (it == m_textureMap.end())
 			{
 				std::cout << "Texture data not found or already have been deleted." << std::endl;
-				std::cout << "---------------------------------------------------------------" << std::endl;
+				//std::cout << "---------------------------------------------------------------" << std::endl;
 
 			}
 

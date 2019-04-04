@@ -29,6 +29,9 @@ void PlayState::Load()
 {
 	//TheInput::Instance()->SetMouseCursorType(InputManager::CROSSHAIR);
 
+	std::cout << "\nLoading PlayState\n";
+	std::cout << "---------------------------------------------------------------" << std::endl;
+
 	m_isAlive = true;
 	m_isActive = true;
 
@@ -141,6 +144,10 @@ void PlayState::Draw()
 
 void PlayState::Unload()
 {
+	std::cout << "\nUnloading PlayState\n";
+	std::cout << "---------------------------------------------------------------" << std::endl;
+
+
 	for (size_t i = 0; i < m_segments.size(); i++)
 	{
 		if (m_segments[i] != nullptr)

@@ -29,6 +29,8 @@ public:
 
 	glm::vec2 GetSize() const;
 
+	void SetSegmentCount(const int count);
+
 	void SetSpeed(const float speed);
 
 private:

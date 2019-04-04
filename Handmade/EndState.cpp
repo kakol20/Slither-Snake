@@ -25,6 +25,9 @@ EndState::~EndState()
 
 void EndState::Load()
 {
+	std::cout << "\nLoading EndState\n";
+	std::cout << "---------------------------------------------------------------" << std::endl;
+
 	m_background.Load("Assets/Textures/End.png", "END_BG", 1600, 900);
 	m_background.SetVisible(true);
 
@@ -74,5 +77,7 @@ void EndState::Draw()
 
 void EndState::Unload()
 {
+	std::cout << "\nUnloading EndState\n";
+	std::cout << "---------------------------------------------------------------" << std::endl;
 	m_background.Unload();
 }

@@ -23,14 +23,14 @@ Apple::Apple()
 	m_texture.SetSpriteDimension((int)m_size.x, (int)m_size.y);
 
 	std::cout << "Apple created\n";
-	std::cout << "---------------------------------------------------------------" << std::endl;
+	//std::cout << "---------------------------------------------------------------" << std::endl;
 }
 
 
 Apple::~Apple()
 {
 	std::cout << "Apple destroyed\n";
-	std::cout << "---------------------------------------------------------------" << std::endl;
+	//std::cout << "---------------------------------------------------------------" << std::endl;
 }
 
 void Apple::Update()

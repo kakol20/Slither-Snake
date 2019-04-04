@@ -2,17 +2,14 @@
 
 Background::Background()
 {
-	std::cout << "Bacgkround created\n";
-	std::cout << "---------------------------------------------------------------" << std::endl;
+	m_size = glm::vec2(0.0f);
 }
 
 Background::~Background()
 {
-	TheAudio::Instance()->UnloadFromMemory(AudioManager::MUSIC_AUDIO, AudioManager::CUSTOM_AUDIO, m_audioTag);
-	TheTexture::Instance()->UnloadFromMemory(TextureManager::TEXTURE_DATA, TextureManager::CUSTOM_DATA, m_textureTag);
-
 	std::cout << "Background destroyed\n";
-	std::cout << "---------------------------------------------------------------" << std::endl;
+
+	//std::cout << "---------------------------------------------------------------" << std::endl;
 }
 
 void Background::Load(const std::string & file, const std::string & textureID, int width, int height)
@@ -54,7 +51,11 @@ void Background::Draw()
 
 void Background::Unload()
 {
+	//TheTexture::Instance()->UnloadFromMemory(TextureManager::TEXTURE_DATA, TextureManager::CUSTOM_DATA, m_textureTag);
+
+	TheAudio::Instance()->UnloadFromMemory(AudioManager::MUSIC_AUDIO, AudioManager::CUSTOM_AUDIO, m_audioTag);
 	TheTexture::Instance()->UnloadFromMemory(TextureManager::TEXTURE_DATA, TextureManager::CUSTOM_DATA, m_textureTag);
+
 }
 
 void Background::SetTexture(const std::string & tag)
