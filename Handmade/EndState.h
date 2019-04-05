@@ -2,6 +2,8 @@
 #include "GameState.h"
 
 #include "InputManager.h"
+#include "TextureManager.h"
+#include "Text.h"
 
 #include "Background.h"
 
@@ -24,6 +26,10 @@ private:
 
 	bool m_keyDown;
 	int m_keyPressed;
+
+	int m_finalScore;
+
+	Text m_finalScoreDisplay;
 
 };
 

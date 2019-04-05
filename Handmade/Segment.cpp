@@ -2,7 +2,7 @@
 
 int Segment::s_totalSegments = 0;
 
-Segment::Segment()
+Segment::Segment() // overload without a paramater
 {
 	if (s_totalSegments == 0)
 	{
@@ -11,7 +11,7 @@ Segment::Segment()
 
 	// create a texture with random segment textures
 
-	if (s_totalSegments == 0)
+	if (s_totalSegments == 0) // the first segment to be created is the head
 	{
 		m_tag = "SEGMENT_HEAD";
 
@@ -30,12 +30,12 @@ Segment::Segment()
 	m_textureTag = "SEGMENT";
 	m_texture.SetTexture("SEGMENT");
 
-	m_size = glm::vec2(40.0f);
-	m_textureSize = glm::vec2(500.0f);
+	m_size = glm::vec2(40.0f); // size of the segment
+	m_textureSize = glm::vec2(500.0f); // size of the texture
 
 	m_texture.SetSpriteDimension((int)m_size.x, (int)m_size.y);
 
-	m_texture.SetTextureDimension(1, 1, 500, 500);
+	m_texture.SetTextureDimension(1, 1, (int)m_textureSize.x, (int)m_textureSize.y);
 
 	m_speed = 8.0f;
 
@@ -47,7 +47,7 @@ Segment::Segment()
 	std::cout << "---------------------------------------------------------------\n";
 }
 
-Segment::Segment(glm::vec3 position)
+Segment::Segment(glm::vec3 position) // parameter of where the segment will spawn
 {
 	if (s_totalSegments == 0)
 	{
@@ -102,6 +102,7 @@ Segment::~Segment()
 
 void Segment::Update()
 {
+	// updating for collision
 	m_bound.SetPosition((int)m_position.x, (int)m_position.y);
 	m_bound.SetRadius(m_size.x / 2.0f);
 }
@@ -110,7 +111,7 @@ void Segment::Draw()
 {
 	if (m_isVisible)
 	{
-		// have origin be in center
+		// have origin be in center instead of the top left
 		float orginX = m_position.x - m_size.x / 2.0f;
 		float orginY = m_position.y - m_size.y / 2.0f;
 
@@ -125,11 +126,11 @@ void Segment::Unload()
 
 void Segment::Move(const glm::vec2 & position)
 {
-	glm::vec3 direction = glm::vec3(position, 0.0f) - m_position;
+	glm::vec3 direction = glm::vec3(position, 0.0f) - m_position; // use inverse kinematics to move snake segments
 
-	if (m_tag == "SEGMENT_HEAD")
+	if (m_tag == "SEGMENT_HEAD") // the head will follow the mouse
 	{
-		if (glm::length(direction) > m_size.x)
+		if (glm::length(direction) > m_size.x) // the segment will be a certain distance away from the position it's following
 		{
 			direction = glm::normalize(direction) * m_speed;
 			m_position = m_position + direction;
@@ -146,7 +147,7 @@ void Segment::Move(const glm::vec2 & position)
 		m_position = glm::vec3(position, 0.0f) - direction;
 	}
 
-	m_angle = std::atan2(direction.y, direction.x);
+	m_angle = std::atan2(direction.y, direction.x); // rotate sprite to face the position it's following
 	m_angle = glm::degrees(m_angle);
 }
 

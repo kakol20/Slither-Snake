@@ -35,7 +35,7 @@ Apple::~Apple()
 
 void Apple::Update()
 {
-	if (!m_isActive)
+	if (!m_isActive) // if it's not active this means that it has been eaten - it will randomly spawn elsewhere
 	{
 		float x = (rand() % (int)(TheScreen::Instance()->GetScreenSize().x - (m_size.x * 2))) + m_size.x;
 		float y = (rand() % (int)(TheScreen::Instance()->GetScreenSize().y - (m_size.x * 2))) + m_size.x;

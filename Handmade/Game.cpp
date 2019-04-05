@@ -28,6 +28,8 @@ bool Game::Initialise(const std::string & name, int screenWidth, int screenHeigh
 	//m_gameState.Load()
 	//m_states.front()->Load();
 
+	TheTexture::Instance()->LoadFontFromFile("Assets/Fonts/Intro.otf", 600, "INTRO_FONT");
+
 	return true;
 }
 

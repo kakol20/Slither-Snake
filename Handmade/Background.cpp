@@ -18,7 +18,7 @@ void Background::Load(const std::string & file, const std::string & textureID, i
 	TheAudio::Instance()->LoadFromFile("Assets/Audio/Hiding_Your_Reality.ogg", AudioManager::MUSIC_AUDIO, "BGM");
 
 	//SetTag("BG");
-	m_tag = "BG";
+	m_tag = textureID;
 	SetTexture(textureID);
 	SetSize(width, height);
 
@@ -28,7 +28,7 @@ void Background::Load(const std::string & file, const std::string & textureID, i
 
 	SetAudio("BGM", Audio::MUSIC_AUDIO);
 
-	m_tag = "BACKGROUND";
+	m_tag = textureID;
 
 	m_audio.Play(Audio::PLAY_ENDLESS);
 }
@@ -53,7 +53,7 @@ void Background::Unload()
 {
 	//TheTexture::Instance()->UnloadFromMemory(TextureManager::TEXTURE_DATA, TextureManager::CUSTOM_DATA, m_textureTag);
 
-	TheAudio::Instance()->UnloadFromMemory(AudioManager::MUSIC_AUDIO, AudioManager::CUSTOM_AUDIO, m_audioTag);
+	//TheAudio::Instance()->UnloadFromMemory(AudioManager::MUSIC_AUDIO, AudioManager::CUSTOM_AUDIO, m_audioTag);
 	TheTexture::Instance()->UnloadFromMemory(TextureManager::TEXTURE_DATA, TextureManager::CUSTOM_DATA, m_textureTag);
 
 }

@@ -35,7 +35,7 @@ void MenuState::Update()
 {
 	const Uint8 * keys = TheInput::Instance()->GetKeyStates();
 
-	if (keys[SDL_SCANCODE_SPACE])
+	if (keys[SDL_SCANCODE_SPACE]) // when the space bar is pressed go to the game
 	{
 		PlayState * temp = new PlayState;
 		temp->Load();

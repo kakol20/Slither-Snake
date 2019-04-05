@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include <vector>
-#include <gtc/random.hpp>
+//#include <gtc/random.hpp>
 #include <algorithm>
 
 #include "InputManager.h"
@@ -33,6 +33,8 @@ public:
 	virtual void Draw();
 	virtual void Unload();
 
+	int GetScore() const;
+
 private:
 	bool m_mouseDown;
 	glm::vec2 m_mousePos;
@@ -44,4 +46,6 @@ private:
 	int m_score;
 
 	Text m_scoreDisplay;
+	Text m_objectiveDisplay;
+	Text m_gameOverDisplay;
 };

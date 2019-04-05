@@ -42,11 +42,22 @@ void PlayState::Load()
 		m_segments.push_back(new Segment(glm::vec3(middle, 0.0f)));
 	}
 
-	// LOAD FONT
-	TheTexture::Instance()->LoadFontFromFile("Assets/Fonts/Intro.otf", 600, "INTRO_FONT");
+	// LOAD TEXT
 
 	m_scoreDisplay.SetFont("INTRO_FONT");
 	m_scoreDisplay.SetColor(255, 255, 255);
+
+	m_objectiveDisplay.SetFont("INTRO_FONT");
+	m_objectiveDisplay.SetColor(255, 255, 255);
+	std::string objectiveText = "Eat apples to gain a segment";
+	m_objectiveDisplay.SetSize(objectiveText.size() * 25, 50);
+	m_objectiveDisplay.SetText(objectiveText);
+
+	m_gameOverDisplay.SetFont("INTRO_FONT");
+	m_gameOverDisplay.SetColor(255, 255, 255);
+	std::string gameOverText = "Avoid contact with own body";
+	m_gameOverDisplay.SetSize(gameOverText.size() * 25, 50);
+	m_gameOverDisplay.SetText(gameOverText);
 }
 
 void PlayState::Update()
@@ -77,6 +88,7 @@ void PlayState::Update()
 			}
 		}
 
+		// Updating game objects
 		for (size_t i = 0; i < m_segments.size(); i++)
 		{
 			m_segments[i]->Update();
@@ -85,9 +97,9 @@ void PlayState::Update()
 
 		// Checking collision with body
 
-		if (m_segments.size() >= 4)
+		if (m_segments.size() >= 7)
 		{
-			for (size_t i = 3; i < m_segments.size(); i++)
+			for (size_t i = 6; i < m_segments.size(); i++)
 			{
 				if (m_segments.front()->GetBound().IsColliding(m_segments[i]->GetBound()))
 				{
@@ -100,7 +112,7 @@ void PlayState::Update()
 		// check for game over
 		if (!m_isAlive)
 		{
-			EndState* temp = new EndState;
+			EndState* temp = new EndState(this);
 			temp->Load();
 
 			TheGame::Instance()->ChangeState(temp);
@@ -114,7 +126,7 @@ void PlayState::Update()
 			size_t last = m_segments.size() - 1;
 			
 			glm::vec3 temp = m_segments[0]->GetPosition() - m_segments[last]->GetPosition();
-			temp = glm::normalize(temp) * glm::vec3(m_segments[0]->GetSize(), 20.0f);
+			temp = glm::normalize(temp) * glm::vec3(m_segments[0]->GetSize(), 20.0f); // spawn segment 20 pixels away from the segment it's following
 
 			m_segments.push_back(new Segment(m_segments[last]->GetPosition() - temp));
 
@@ -132,6 +144,10 @@ void PlayState::Update()
 
 void PlayState::Draw()
 {
+	m_scoreDisplay.Draw(25, 25);
+	m_objectiveDisplay.Draw(25, (int)TheScreen::Instance()->GetScreenSize().y - 75);
+	m_gameOverDisplay.Draw(25, (int)TheScreen::Instance()->GetScreenSize().y - 125);
+
 	for (size_t i = 0; i < m_segments.size(); i++)
 	{
 		m_segments[i]->Draw();
@@ -139,7 +155,7 @@ void PlayState::Draw()
 
 	m_apple.Draw();
 
-	m_scoreDisplay.Draw(50, 50);
+	
 }
 
 void PlayState::Unload()
@@ -161,4 +177,9 @@ void PlayState::Unload()
 	m_segments.clear();
 
 	m_apple.Unload();
+}
+
+int PlayState::GetScore() const
+{
+	return m_score;
 }
