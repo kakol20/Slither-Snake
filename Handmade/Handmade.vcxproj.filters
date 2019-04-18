@@ -13,189 +13,183 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Built In">
-      <UniqueIdentifier>{3acc684d-b6a1-4a78-b018-5c88c7f3e766}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Built In\Managers">
-      <UniqueIdentifier>{2e826b70-23c4-4de0-be3a-90618f193e31}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Built In\Main">
-      <UniqueIdentifier>{d7bed421-5170-40a8-aa37-6a1ac86a1126}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Built In\Components">
-      <UniqueIdentifier>{06c93391-09c5-4f77-bcf2-aaf939c01ee0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Built In\Components\Audio">
-      <UniqueIdentifier>{b81f9d0c-a5dd-4b2f-8068-8fc54c6318f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Built In\Components\Collision">
-      <UniqueIdentifier>{e21bdc27-7b51-403d-9650-ac17241683e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Built In\Components\Visual">
-      <UniqueIdentifier>{952c6fe5-7ab9-449b-a46a-397cb483c6b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Built In">
-      <UniqueIdentifier>{b8f6247f-8994-4269-9b43-f383b3871f4f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Built In\Managers">
-      <UniqueIdentifier>{f0d43da4-3c10-4b0d-9ec4-1481302c07f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Built In\Main">
-      <UniqueIdentifier>{873c0c68-a65e-4583-8bef-911809385fa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Built In\Components">
+    <Filter Include="Header Files\Components">
       <UniqueIdentifier>{758e4c95-b125-4b5d-9fbe-39439773b94c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Built In\Components\Audio">
+    <Filter Include="Header Files\Main">
+      <UniqueIdentifier>{873c0c68-a65e-4583-8bef-911809385fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{f0d43da4-3c10-4b0d-9ec4-1481302c07f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\Audio">
       <UniqueIdentifier>{396013c2-095e-44a9-b3e7-73586546202d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Built In\Components\Collision">
+    <Filter Include="Header Files\Components\Collision">
       <UniqueIdentifier>{791b9fa1-4df8-46c2-92cb-07c272d79629}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Built In\Components\Visual">
+    <Filter Include="Header Files\Components\Visual">
       <UniqueIdentifier>{ff8fe4d9-d308-4184-bc9e-6311cf02449f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Own Code">
-      <UniqueIdentifier>{190a60a1-ba24-4be1-9a1e-4bc61328b58d}</UniqueIdentifier>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{06c93391-09c5-4f77-bcf2-aaf939c01ee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main">
+      <UniqueIdentifier>{d7bed421-5170-40a8-aa37-6a1ac86a1126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{2e826b70-23c4-4de0-be3a-90618f193e31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Audio">
+      <UniqueIdentifier>{b81f9d0c-a5dd-4b2f-8068-8fc54c6318f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Collision">
+      <UniqueIdentifier>{e21bdc27-7b51-403d-9650-ac17241683e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Visual">
+      <UniqueIdentifier>{952c6fe5-7ab9-449b-a46a-397cb483c6b9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Own Code">
-      <UniqueIdentifier>{beae608a-4f7c-4187-ac29-82b3a6bc1909}</UniqueIdentifier>
+      <UniqueIdentifier>{10846a22-c0da-440e-8870-7eca4690a840}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Own Code\States">
-      <UniqueIdentifier>{2c71fcaa-ef1f-4ac7-bc70-ad4f2134c249}</UniqueIdentifier>
+    <Filter Include="Source Files\Own Code">
+      <UniqueIdentifier>{b6242413-84e6-4133-b628-83231a94c7a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Own Code\States">
-      <UniqueIdentifier>{f8f6088d-e560-4a55-a04b-a8cca0f3a2db}</UniqueIdentifier>
+    <Filter Include="Source Files\Own Code\Game Objects">
+      <UniqueIdentifier>{563f52ca-7757-459c-9d5f-1bc96c162bdc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Own Code\GameObjects">
-      <UniqueIdentifier>{7cb8f0c4-200f-4e77-9991-e27ccf35a391}</UniqueIdentifier>
+    <Filter Include="Header Files\Own Code\Game Objects">
+      <UniqueIdentifier>{f3324f34-9a0c-4dd0-b641-d002f11fb59b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Own Code\GameObjects">
-      <UniqueIdentifier>{cbac3fd6-afc0-4059-910d-5ca89677d4d1}</UniqueIdentifier>
+    <Filter Include="Source Files\Own Code\Game States">
+      <UniqueIdentifier>{0bae8783-2c76-469d-8bb8-f495fbebbbaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Own Code\Game States">
+      <UniqueIdentifier>{82f5f166-ebe1-45fb-b1c2-960c6befbb10}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
-      <Filter>Header Files\Built In\Components\Visual</Filter>
+      <Filter>Header Files\Components\Visual</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Header Files\Built In\Components\Visual</Filter>
+      <Filter>Header Files\Components\Visual</Filter>
     </ClInclude>
     <ClInclude Include="Text.h">
-      <Filter>Header Files\Built In\Components\Visual</Filter>
+      <Filter>Header Files\Components\Visual</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>Header Files\Built In\Main</Filter>
+      <Filter>Header Files\Main</Filter>
     </ClInclude>
     <ClInclude Include="AudioManager.h">
-      <Filter>Header Files\Built In\Managers</Filter>
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>Header Files\Built In\Managers</Filter>
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="ScreenManager.h">
-      <Filter>Header Files\Built In\Managers</Filter>
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
-      <Filter>Header Files\Built In\Managers</Filter>
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="SFX.h">
-      <Filter>Header Files\Built In\Components\Audio</Filter>
+      <Filter>Header Files\Components\Audio</Filter>
     </ClInclude>
     <ClInclude Include="Audio.h">
-      <Filter>Header Files\Built In\Components\Audio</Filter>
+      <Filter>Header Files\Components\Audio</Filter>
     </ClInclude>
     <ClInclude Include="AABB.h">
-      <Filter>Header Files\Built In\Components\Collision</Filter>
+      <Filter>Header Files\Components\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Sphere.h">
-      <Filter>Header Files\Built In\Components\Collision</Filter>
+      <Filter>Header Files\Components\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files\Own Code</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files\Own Code\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayState.h">
-      <Filter>Header Files\Own Code\States</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>Header Files\Own Code\States</Filter>
-    </ClInclude>
     <ClInclude Include="Background.h">
-      <Filter>Header Files\Own Code\GameObjects</Filter>
+      <Filter>Header Files\Own Code\Game Objects</Filter>
     </ClInclude>
-    <ClInclude Include="MenuState.h">
-      <Filter>Header Files\Own Code\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Apple.h">
-      <Filter>Header Files\Own Code\GameObjects</Filter>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Own Code\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="Segment.h">
-      <Filter>Header Files\Own Code\GameObjects</Filter>
+      <Filter>Header Files\Own Code\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="EndState.h">
-      <Filter>Header Files\Own Code\States</Filter>
+      <Filter>Header Files\Own Code\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\Own Code\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>Header Files\Own Code\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>Header Files\Own Code\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>Header Files\Own Code\Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
-      <Filter>Source Files\Built In\Components\Visual</Filter>
+      <Filter>Source Files\Components\Visual</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files\Built In\Components\Visual</Filter>
+      <Filter>Source Files\Components\Visual</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
-      <Filter>Source Files\Built In\Components\Visual</Filter>
+      <Filter>Source Files\Components\Visual</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files\Built In\Main</Filter>
+      <Filter>Source Files\Main</Filter>
     </ClCompile>
     <ClCompile Include="AudioManager.cpp">
-      <Filter>Source Files\Built In\Managers</Filter>
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files\Built In\Managers</Filter>
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="ScreenManager.cpp">
-      <Filter>Source Files\Built In\Managers</Filter>
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
-      <Filter>Source Files\Built In\Managers</Filter>
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="SFX.cpp">
-      <Filter>Source Files\Built In\Components\Audio</Filter>
+      <Filter>Source Files\Components\Audio</Filter>
     </ClCompile>
     <ClCompile Include="Audio.cpp">
-      <Filter>Source Files\Built In\Components\Audio</Filter>
+      <Filter>Source Files\Components\Audio</Filter>
     </ClCompile>
     <ClCompile Include="AABB.cpp">
-      <Filter>Source Files\Built In\Components\Collision</Filter>
+      <Filter>Source Files\Components\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Sphere.cpp">
-      <Filter>Source Files\Built In\Components\Collision</Filter>
+      <Filter>Source Files\Components\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\Own Code</Filter>
     </ClCompile>
-    <ClCompile Include="Segment.cpp">
-      <Filter>Source Files\Own Code\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayState.cpp">
-      <Filter>Source Files\Own Code\States</Filter>
-    </ClCompile>
     <ClCompile Include="Background.cpp">
-      <Filter>Source Files\Own Code\GameObjects</Filter>
+      <Filter>Source Files\Own Code\Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="MenuState.cpp">
-      <Filter>Source Files\Own Code\States</Filter>
-    </ClCompile>
-    <ClCompile Include="Apple.cpp">
-      <Filter>Source Files\Own Code\GameObjects</Filter>
+    <ClCompile Include="Segment.cpp">
+      <Filter>Source Files\Own Code\Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="EndState.cpp">
-      <Filter>Source Files\Own Code\States</Filter>
+      <Filter>Source Files\Own Code\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>Source Files\Own Code\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>Source Files\Own Code\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>Source Files\Own Code\Game Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -147,7 +147,7 @@ void Segment::Move(const glm::vec2 & position)
 		m_position = glm::vec3(position, 0.0f) - direction;
 	}
 
-	m_angle = std::atan2(direction.y, direction.x); // rotate sprite to face the position it's following
+	m_angle = std::atan2(direction.y == 0.0f ? 0.01f : direction.y, direction.x == 0.0f ? 0.01f : direction.x); // rotate sprite to face the position it's following
 	m_angle = glm::degrees(m_angle);
 }
 
