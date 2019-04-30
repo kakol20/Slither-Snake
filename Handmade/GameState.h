@@ -9,7 +9,7 @@ public:
 	virtual ~GameState() = 0 {};
 	
 	virtual void Load() = 0;
-	virtual void Update() = 0;
+	virtual void Update(float dt) = 0;
 	virtual void Draw() = 0;
 	virtual void Unload() = 0;
 

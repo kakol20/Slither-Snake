@@ -17,7 +17,7 @@ public:
 	virtual ~EndState();
 
 	virtual void Load();
-	virtual void Update();
+	virtual void Update(float dt);
 	virtual void Draw();
 	virtual void Unload();
 

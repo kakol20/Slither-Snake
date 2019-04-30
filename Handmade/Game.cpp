@@ -65,7 +65,7 @@ bool Game::Run()
 
   	if (m_states.front()->IsActive())
 	{
-		m_states.front()->Update();
+		m_states.front()->Update(m_deltaTime);
 	}
 
 	m_states.front()->Draw();

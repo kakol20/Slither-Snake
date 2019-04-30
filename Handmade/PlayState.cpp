@@ -46,21 +46,27 @@ void PlayState::Load()
 
 	m_scoreDisplay.SetFont("INTRO_FONT");
 	m_scoreDisplay.SetColor(255, 255, 255);
+	m_scoreDisplay.SetFontSize(50);
+	m_scoreDisplay.SetPosition(25, 25);
 
 	m_objectiveDisplay.SetFont("INTRO_FONT");
 	m_objectiveDisplay.SetColor(255, 255, 255);
-	std::string objectiveText = "Eat apples to gain a segment";
-	m_objectiveDisplay.SetSize(objectiveText.size() * 25, 50);
-	m_objectiveDisplay.SetText(objectiveText);
+	//std::string objectiveText = "Eat apples to gain a segment";
+	//m_objectiveDisplay.SetSize(objectiveText.size() * 25, 50);
+	m_objectiveDisplay.SetText("Eat apples to gain a segment");
+	m_objectiveDisplay.SetFontSize(50);
+	m_objectiveDisplay.SetPosition(25, (int)TheScreen::Instance()->GetScreenSize().y - 75);
+
 
 	m_gameOverDisplay.SetFont("INTRO_FONT");
 	m_gameOverDisplay.SetColor(255, 255, 255);
-	std::string gameOverText = "Avoid contact with own body";
-	m_gameOverDisplay.SetSize(gameOverText.size() * 25, 50);
-	m_gameOverDisplay.SetText(gameOverText);
+	//m_gameOverDisplay.SetSize(gameOverText.size() * 25, 50);
+	m_gameOverDisplay.SetText("Avoid contact with own body, Eat apples to gain a segment");
+	m_gameOverDisplay.SetPosition(25, (int)TheScreen::Instance()->GetScreenSize().y - 125);
+	m_gameOverDisplay.SetFontSize(50);
 }
 
-void PlayState::Update()
+void PlayState::Update(float dt)
 {
 	const Uint8 * keys = TheInput::Instance()->GetKeyStates();
 
@@ -137,16 +143,16 @@ void PlayState::Update()
 
 		// Updating text
 		std::string scoreText = "Score: " + std::to_string(m_score);
-		m_scoreDisplay.SetSize(25 * scoreText.size(), 50);
+		//m_scoreDisplay.SetSize(25 * scoreText.size(), 50);
 		m_scoreDisplay.SetText(scoreText);
 	}
 }
 
 void PlayState::Draw()
 {
-	m_scoreDisplay.Draw(25, 25);
-	m_objectiveDisplay.Draw(25, (int)TheScreen::Instance()->GetScreenSize().y - 75);
-	m_gameOverDisplay.Draw(25, (int)TheScreen::Instance()->GetScreenSize().y - 125);
+	m_scoreDisplay.Draw();
+	m_objectiveDisplay.Draw();
+	m_gameOverDisplay.Draw();
 
 	for (size_t i = 0; i < m_segments.size(); i++)
 	{

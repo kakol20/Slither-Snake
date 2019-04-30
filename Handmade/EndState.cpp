@@ -50,7 +50,7 @@ void EndState::Load()
 	m_finalScoreDisplay.SetText(finalScoreText);
 }
 
-void EndState::Update()
+void EndState::Update(float dt)
 {
 	const Uint8* keys = TheInput::Instance()->GetKeyStates();
 

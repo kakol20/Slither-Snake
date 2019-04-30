@@ -19,7 +19,9 @@
 #include "Segment.h"
 #include "Apple.h"
 
-#include "Text.h"
+//#include "Text.h"
+
+#include "TextAdvanced.h"
 
 class PlayState : public GameState
 {
@@ -29,7 +31,7 @@ public:
 	virtual ~PlayState();
 
 	virtual void Load();
-	virtual void Update();
+	virtual void Update(float dt);
 	virtual void Draw();
 	virtual void Unload();
 
@@ -45,7 +47,7 @@ private:
 
 	int m_score;
 
-	Text m_scoreDisplay;
-	Text m_objectiveDisplay;
-	Text m_gameOverDisplay;
+	TextAdvanced m_scoreDisplay;
+	TextAdvanced m_objectiveDisplay;
+	TextAdvanced m_gameOverDisplay;
 };

@@ -60,7 +60,8 @@ Segment::Segment(glm::vec3 position) // parameter of where the segment will spaw
 	{
 		m_tag = "SEGMENT_HEAD";
 
-		m_position = glm::vec3(TheInput::Instance()->GetMousePosition(), 0.0f);
+		//m_position = glm::vec3(TheInput::Instance()->GetMousePosition(), 0.0f);
+		m_position = position;
 		
 		m_layer = 0.0f;
 	}
@@ -147,8 +148,10 @@ void Segment::Move(const glm::vec2 & position)
 		m_position = glm::vec3(position, 0.0f) - direction;
 	}
 
-	m_angle = std::atan2(direction.y == 0.0f ? 0.01f : direction.y, direction.x == 0.0f ? 0.01f : direction.x); // rotate sprite to face the position it's following
-	m_angle = glm::degrees(m_angle);
+	//m_angle = std::atan2(direction.y == 0.0f ? 0.01f : direction.y, direction.x == 0.0f ? 0.01f : direction.x); // rotate sprite to face the position it's following
+	//m_angle = glm::degrees(m_angle);
+
+	m_angle = 0.0f;
 }
 
 Sphere Segment::GetBound() const

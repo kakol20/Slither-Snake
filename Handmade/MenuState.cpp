@@ -31,7 +31,7 @@ void MenuState::Load()
 	//m_isVisible = true;
 }
 
-void MenuState::Update()
+void MenuState::Update(float dt)
 {
 	const Uint8 * keys = TheInput::Instance()->GetKeyStates();
 

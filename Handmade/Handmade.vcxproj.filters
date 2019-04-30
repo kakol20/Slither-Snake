@@ -67,6 +67,9 @@
     <Filter Include="Header Files\Own Code\Game States">
       <UniqueIdentifier>{82f5f166-ebe1-45fb-b1c2-960c6befbb10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Own Code\Components">
+      <UniqueIdentifier>{ee2548eb-deab-4cf2-932c-0ea0a0bd8b8f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -132,6 +135,9 @@
     <ClInclude Include="Apple.h">
       <Filter>Header Files\Own Code\Game Objects</Filter>
     </ClInclude>
+    <ClInclude Include="TextAdvanced.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -190,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="Apple.cpp">
       <Filter>Source Files\Own Code\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="TextAdvanced.cpp">
+      <Filter>Source Files\Own Code\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
