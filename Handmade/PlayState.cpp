@@ -8,6 +8,8 @@ PlayState::PlayState()
 	m_mousePos = glm::vec2(0.0f);
 
 	m_score = 0;
+
+	m_elapsedTime = 0.0;
 }
 
 PlayState::PlayState(GameState * prevState)
@@ -55,15 +57,22 @@ void PlayState::Load()
 	//m_objectiveDisplay.SetSize(objectiveText.size() * 25, 50);
 	m_objectiveDisplay.SetText("Eat apples to gain a segment");
 	m_objectiveDisplay.SetFontSize(50);
-	m_objectiveDisplay.SetPosition(25, (int)TheScreen::Instance()->GetScreenSize().y - 75);
+	m_objectiveDisplay.SetPosition(25.0f, TheScreen::Instance()->GetScreenSize().y - 75.0f);
 
 
 	m_gameOverDisplay.SetFont("INTRO_FONT");
 	m_gameOverDisplay.SetColor(255, 255, 255);
 	//m_gameOverDisplay.SetSize(gameOverText.size() * 25, 50);
-	m_gameOverDisplay.SetText("Avoid contact with own body, Eat apples to gain a segment");
-	m_gameOverDisplay.SetPosition(25, (int)TheScreen::Instance()->GetScreenSize().y - 125);
+	m_gameOverDisplay.SetText("Avoid contact with own body");
+	m_gameOverDisplay.SetPosition(25.0f, TheScreen::Instance()->GetScreenSize().y - 125.0f);
 	m_gameOverDisplay.SetFontSize(50);
+
+	m_timeDisplay.SetFont("INTRO_FONT");
+	m_timeDisplay.SetColor(255, 255, 255);
+	m_timeDisplay.SetFontSize(50);
+	m_timeDisplay.SetPosition(25.0f, 75.0f);
+
+	m_cumulativeDT = 0;
 }
 
 void PlayState::Update(float dt)
@@ -125,34 +134,51 @@ void PlayState::Update(float dt)
 
 			temp = nullptr;
 		}
-
-		// Checking collision with apple
-		if (m_segments.front()->GetBound().IsColliding(m_apple.GetBound()))
+		else
 		{
-			size_t last = m_segments.size() - 1;
-			
-			glm::vec3 temp = m_segments[0]->GetPosition() - m_segments[last]->GetPosition();
-			temp = glm::normalize(temp) * glm::vec3(m_segments[0]->GetSize(), 20.0f); // spawn segment 20 pixels away from the segment it's following
+			// Checking collision with apple
+			if (m_segments.front()->GetBound().IsColliding(m_apple.GetBound()))
+			{
+				size_t last = m_segments.size() - 1;
 
-			m_segments.push_back(new Segment(m_segments[last]->GetPosition() - temp));
+				glm::vec3 temp = m_segments[0]->GetPosition() - m_segments[last]->GetPosition();
+				temp = glm::normalize(temp) * glm::vec3(m_segments[0]->GetSize(), 20.0f); // spawn segment 20 pixels away from the segment it's following
 
-			m_apple.SetActive(false);
+				m_segments.push_back(new Segment(m_segments[last]->GetPosition() - temp));
 
-			m_score++;
+				m_apple.SetActive(false);
+
+				m_score++;
+			}
+
+
+			m_elapsedTime += dt;
 		}
 
 		// Updating text
 		std::string scoreText = "Score: " + std::to_string(m_score);
 		//m_scoreDisplay.SetSize(25 * scoreText.size(), 50);
 		m_scoreDisplay.SetText(scoreText);
+
+
+		if (m_cumulativeDT > 1000.0f) // update time every 1 second
+		{
+			std::string timeText = "Time: " + std::to_string((int)(m_elapsedTime * 0.001f));
+			m_timeDisplay.SetText(timeText);
+
+			m_cumulativeDT = 0.0f;
+		}
+
+		m_cumulativeDT += dt;
 	}
 }
 
 void PlayState::Draw()
 {
+	m_timeDisplay.Draw();
 	m_scoreDisplay.Draw();
-	m_objectiveDisplay.Draw();
 	m_gameOverDisplay.Draw();
+	m_objectiveDisplay.Draw();
 
 	for (size_t i = 0; i < m_segments.size(); i++)
 	{

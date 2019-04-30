@@ -47,7 +47,11 @@ private:
 
 	int m_score;
 
+	float m_elapsedTime;
+	float m_cumulativeDT;
+
+	TextAdvanced m_timeDisplay;
 	TextAdvanced m_scoreDisplay;
-	TextAdvanced m_objectiveDisplay;
 	TextAdvanced m_gameOverDisplay;
+	TextAdvanced m_objectiveDisplay;
 };
