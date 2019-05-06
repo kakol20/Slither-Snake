@@ -9,7 +9,7 @@ PlayState::PlayState()
 
 	m_score = 0;
 
-	m_elapsedTime = 0.0;
+	m_elapsedTimePS = 0.0;
 }
 
 PlayState::PlayState(GameState * prevState)
@@ -20,6 +20,8 @@ PlayState::PlayState(GameState * prevState)
 
 	m_score = 0;
 	m_mousePos = glm::vec2(0.0f);
+
+	m_timeElapsed = prevState->GetTimeElapsed();
 
 }
 
@@ -81,7 +83,7 @@ void PlayState::Update(float dt)
 
 	if (keys[SDL_SCANCODE_ESCAPE])
 	{
-		m_isAlive = false;
+		//m_isAlive = false;
 	}
 	else
 	{
@@ -152,7 +154,7 @@ void PlayState::Update(float dt)
 			}
 
 
-			m_elapsedTime += dt;
+			m_elapsedTimePS += dt;
 		}
 
 		// Updating text
@@ -163,7 +165,7 @@ void PlayState::Update(float dt)
 
 		if (m_cumulativeDT > 1000.0f) // update time every 1 second
 		{
-			std::string timeText = "Time: " + std::to_string((int)(m_elapsedTime * 0.001f));
+			std::string timeText = "Time: " + std::to_string((int)(m_elapsedTimePS * 0.001f));
 			m_timeDisplay.SetText(timeText);
 
 			m_cumulativeDT = 0.0f;
@@ -171,6 +173,8 @@ void PlayState::Update(float dt)
 
 		m_cumulativeDT += dt;
 	}
+
+	m_timeElapsed += dt;
 }
 
 void PlayState::Draw()

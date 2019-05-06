@@ -1,5 +1,9 @@
 #pragma once
 
+#include <vector>
+
+#include <fstream>
+
 #include "InputManager.h"
 #include "AudioManager.h"
 #include "TextureManager.h"
@@ -7,9 +11,9 @@
 #include "GameState.h"
 
 #include "Background.h"
-#include "PlayState.h"
 
-#include <vector>
+#include "PlayState.h"
+#include "EndState.h"
 
 class MenuState : public GameState
 {

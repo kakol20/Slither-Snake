@@ -25,6 +25,8 @@ EndState::EndState(GameState* prevState)
 	{
 		m_finalScore = dynamic_cast<PlayState*>(prevState)->GetScore();
 	}
+
+	m_timeElapsed = prevState->GetTimeElapsed();
 }
 
 
@@ -67,7 +69,7 @@ void EndState::Update(float dt)
 
 	if (!keys[SDL_SCANCODE_SPACE] && m_keyDown && m_keyPressed == SDL_SCANCODE_SPACE) // go to the menu when space bar pressed
 	{
-		MenuState* temp = new MenuState;
+		MenuState* temp = new MenuState(this);
 		temp->Load();
 
 		TheGame::Instance()->ChangeState(temp);
@@ -82,7 +84,29 @@ void EndState::Update(float dt)
 	{
 		m_isAlive = false;
 		m_isActive = false;
+
+		std::fstream file;
+
+		file.open("GameRunning.txt", std::ios_base::in);
+
+		if (!file.is_open())
+		{
+			file.close();
+			file.open("GameRunning.txt", std::ios_base::out);
+
+			file << "       GAME RUNNING TIME\n";
+			file << "-------------------------------\n";
+		}
+
+		// OUTPUTTING TIME SPENT ON GAME
+		file.close();
+		file.open("GameRunning.txt", std::ios_base::app);
+		std::string output = "Time Spent On Game: " + std::to_string(m_timeElapsed / 1000.0f) + " seconds\n";
+		file << output;
+		file.close();
 	}
+
+	m_timeElapsed += dt;
 }
 
 void EndState::Draw()

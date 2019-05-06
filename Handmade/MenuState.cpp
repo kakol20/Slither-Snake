@@ -7,11 +7,15 @@ MenuState::MenuState()
 	m_previousState = nullptr;
 	m_isAlive = true;
 	m_isActive = true;
+
+	m_timeElapsed = 0.0f;
 }
 
 MenuState::MenuState(GameState * prevState)
 {
 	m_previousState = prevState;
+
+	m_timeElapsed = prevState->GetTimeElapsed();
 }
 
 MenuState::~MenuState()
@@ -37,7 +41,7 @@ void MenuState::Update(float dt)
 
 	if (keys[SDL_SCANCODE_SPACE]) // when the space bar is pressed go to the game
 	{
-		PlayState * temp = new PlayState;
+		PlayState * temp = new PlayState(this);
 		temp->Load();
 
 		TheGame::Instance()->ChangeState(temp);
@@ -52,7 +56,16 @@ void MenuState::Update(float dt)
 	{
 		m_isAlive = false;
 		m_isActive = false;
+
+		EndState * temp = new EndState(this);
+		temp->Load();
+
+		TheGame::Instance()->ChangeState(temp);
+
+		temp = nullptr;
 	}
+
+	m_timeElapsed += dt;
 }
 
 void MenuState::Draw()

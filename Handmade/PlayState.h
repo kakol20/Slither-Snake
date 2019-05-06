@@ -47,7 +47,7 @@ private:
 
 	int m_score;
 
-	float m_elapsedTime;
+	float m_elapsedTimePS;
 	float m_cumulativeDT;
 
 	TextAdvanced m_timeDisplay;

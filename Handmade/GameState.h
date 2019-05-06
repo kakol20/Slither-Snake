@@ -20,6 +20,8 @@ public:
 	void SetAlive(bool flag) { m_isAlive = flag; };
 	void SetActive(bool flag) { m_isActive = flag; };
 
+	float GetTimeElapsed() const { return m_timeElapsed; };
+
 	void setPreviousState(GameState * state) { m_previousState = state; };
 
 protected:
@@ -28,4 +30,6 @@ protected:
 	//bool m_isVisible;
 
 	GameState* m_previousState = nullptr;
+
+	float m_timeElapsed;
 };

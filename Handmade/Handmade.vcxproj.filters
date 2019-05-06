@@ -70,6 +70,9 @@
     <Filter Include="Source Files\Own Code\Components">
       <UniqueIdentifier>{ee2548eb-deab-4cf2-932c-0ea0a0bd8b8f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Own Code\Components">
+      <UniqueIdentifier>{baa9f8df-bb93-4990-bcf8-3a9906ba75c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -136,7 +139,7 @@
       <Filter>Header Files\Own Code\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="TextAdvanced.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Own Code\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
