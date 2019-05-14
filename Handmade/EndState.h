@@ -1,8 +1,11 @@
 #pragma once
 
-#include <fstream>
 #include <string>
+#include <fstream>
 #include <iostream>
+#include <algorithm>
+#include <vector>
+#include <deque>
 
 #include "GameState.h"
 
@@ -13,6 +16,13 @@
 #include "Background.h"
 
 #include "MenuState.h"
+
+struct HighScore
+{
+	int playerID;
+	int score;
+	float timeSpent;
+};
 
 class EndState : public GameState
 {
@@ -34,7 +44,11 @@ private:
 
 	int m_finalScore;
 
+	float m_finalTimeScore;
+
 	Text m_finalScoreDisplay;
+
+	bool SortScores(HighScore left, HighScore right) const { return left.score > right.score; };
 
 };
 

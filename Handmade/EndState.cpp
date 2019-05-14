@@ -24,6 +24,7 @@ EndState::EndState(GameState* prevState)
 	if (dynamic_cast<PlayState*>(prevState))
 	{
 		m_finalScore = dynamic_cast<PlayState*>(prevState)->GetScore();
+		m_finalTimeScore = dynamic_cast<PlayState*>(prevState)->GetTimeScore();
 	}
 
 	m_timeElapsed = prevState->GetTimeElapsed();
@@ -87,12 +88,13 @@ void EndState::Update(float dt)
 
 		std::fstream file;
 
-		file.open("GameRunning.txt", std::ios_base::in);
+		file.open("Data/GameRunning.txt", std::ios_base::in);
 
+		// Checks if the file exists
 		if (!file.is_open())
 		{
 			file.close();
-			file.open("GameRunning.txt", std::ios_base::out);
+			file.open("Data/GameRunning.txt", std::ios_base::out);
 
 			file << "       GAME RUNNING TIME\n";
 			file << "-------------------------------\n";
@@ -100,9 +102,63 @@ void EndState::Update(float dt)
 
 		// OUTPUTTING TIME SPENT ON GAME
 		file.close();
-		file.open("GameRunning.txt", std::ios_base::app);
+		file.open("Data/GameRunning.txt", std::ios_base::app);
 		std::string output = "Time Spent On Game: " + std::to_string(m_timeElapsed / 1000.0f) + " seconds\n";
 		file << output;
+		file.close();
+
+		// SAVING HIGHSCORE IN A BINARY FILE
+		// First binary data stores the number of players that have played the game
+		file.open("Data/score.dat", std::ios_base::in | std::ios_base::binary);
+
+		int totalPlayers = 0;
+		if (!file.is_open()) // check if file exists or not
+		{
+			file.close();
+			file.open("Data/score.dat", std::ios_base::out | std::ios_base::binary);
+
+			file.write((char*)&totalPlayers, sizeof(int));
+
+			file.close();
+			file.open("Data/score.dat", std::ios_base::in | std::ios_base::binary);
+		}
+
+		file.read((char*)&totalPlayers, sizeof(int)); // checks for the number of players that have played the game
+
+		std::deque<HighScore> scoreArray; // puts players in a vector to be sorted later
+
+		for (int i = 0; i < totalPlayers; i++) // goes through the players saved in binary file
+		{
+			HighScore temp;
+
+			file.read((char*)&temp, sizeof(HighScore));
+
+			scoreArray.push_back(temp);
+		}
+
+		file.close();
+		
+		totalPlayers++;
+
+		HighScore newScore;
+		newScore.score = m_finalScore;
+		newScore.playerID = totalPlayers;
+		newScore.timeSpent = m_finalTimeScore;
+
+		scoreArray.push_back(newScore);
+
+		std::sort(scoreArray.begin(), scoreArray.end(), SortScores);
+
+		// Saves sorted scores
+		file.open("Data/score.dat", std::ios_base::out | std::ios_base::binary);
+
+		file.write((char*)&totalPlayers, sizeof(int));
+
+		for (size_t i = 0; i < scoreArray.size(); i++)
+		{
+			file.write((char*)&(scoreArray[i]), sizeof(HighScore));
+		}
+
 		file.close();
 	}
 

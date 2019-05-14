@@ -37,6 +37,8 @@ public:
 
 	int GetScore() const;
 
+	float GetTimeScore() const;
+
 private:
 	bool m_mouseDown;
 	glm::vec2 m_mousePos;

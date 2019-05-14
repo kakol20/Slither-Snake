@@ -219,3 +219,8 @@ int PlayState::GetScore() const
 {
 	return m_score;
 }
+
+float PlayState::GetTimeScore() const
+{
+	return m_elapsedTimePS / 1000.0f;
+}
