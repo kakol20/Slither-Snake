@@ -147,6 +147,12 @@
     <ClInclude Include="PauseState.h">
       <Filter>Header Files\Own Code\Game States</Filter>
     </ClInclude>
+    <ClInclude Include="SetNameState.h">
+      <Filter>Header Files\Own Code\Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="HighscoreState.h">
+      <Filter>Header Files\Own Code\Game States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -213,6 +219,12 @@
       <Filter>Source Files\Own Code\Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="PauseState.cpp">
+      <Filter>Source Files\Own Code\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="SetNameState.cpp">
+      <Filter>Source Files\Own Code\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="HighscoreState.cpp">
       <Filter>Source Files\Own Code\Game States</Filter>
     </ClCompile>
   </ItemGroup>

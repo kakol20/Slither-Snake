@@ -26,6 +26,7 @@ public:
 	int GetTextSize();
 	float GetTextWidth();
 	size_t GetTextLength();
+	glm::vec2 GetPosition();
 
 	void Draw();
 

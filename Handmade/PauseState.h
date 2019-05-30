@@ -14,7 +14,7 @@
 #include "Background.h"
 
 #include "PlayState.h"
-#include "EndState.h"
+//#include "EndState.h"
 
 #include "TextAdvanced.h"
 

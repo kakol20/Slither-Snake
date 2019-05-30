@@ -145,7 +145,7 @@ void PlayState::Update(float dt)
 			// check for game over
 			if (!m_isAlive && m_gameOver)
 			{
-				EndState* temp = new EndState(this);
+				SetNameState* temp = new SetNameState(this);
 				temp->Load();
 
 				TheGame::Instance()->ChangeState(temp);

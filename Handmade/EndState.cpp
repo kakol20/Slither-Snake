@@ -9,7 +9,7 @@ EndState::EndState()
 
 	m_keyPressed = 0;
 
-	m_finalScore = 0;
+	//m_finalScore = 0;
 }
 
 EndState::EndState(GameState* prevState)
@@ -19,17 +19,17 @@ EndState::EndState(GameState* prevState)
 
 	m_keyPressed = 0;
 
-	m_finalScore = 0;
+	////m_finalScore = 0;
 
 	m_finishedGame = false;
 
-	if (dynamic_cast<PlayState*>(prevState))
+	/*if (dynamic_cast<PlayState*>(prevState))
 	{
 		m_finalScore = dynamic_cast<PlayState*>(prevState)->GetScore();
 		m_finalTimeScore = dynamic_cast<PlayState*>(prevState)->GetTimeScore();
 
 		m_finishedGame = true;
-	}
+	}*/
 
 	m_timeElapsed = prevState->GetTimeElapsed();
 }
@@ -50,77 +50,16 @@ void EndState::Load()
 	m_isAlive = true;
 	m_isActive = true;
 
-	m_finalScoreDisplay.SetFont("INTRO_FONT");
+	/*m_finalScoreDisplay.SetFont("INTRO_FONT");
 	m_finalScoreDisplay.SetColor(255, 255, 255);
 	std::string finalScoreText = "Final Score: " + std::to_string(m_finalScore);
 	m_finalScoreDisplay.SetSize(25 * finalScoreText.size(), 50);
-	m_finalScoreDisplay.SetText(finalScoreText);
+	m_finalScoreDisplay.SetText(finalScoreText);*/
 }
 
 void EndState::Update(float dt)
 {
 	const Uint8* keys = TheInput::Instance()->GetKeyStates();
-
-	//if (keys[SDL_SCANCODE_SPACE] && !m_keyDown) // to avoid key holding effecting the next game state
-	//{
-	//	m_keyDown = true;
-	//	m_keyPressed = SDL_SCANCODE_SPACE;
-	//}
-	//else if (keys[SDL_SCANCODE_ESCAPE] && !m_keyDown)
-	//{
-	//	m_keyDown = true;
-	//	m_keyPressed = SDL_SCANCODE_ESCAPE;
-	//}
-
-	//if (!keys[SDL_SCANCODE_SPACE] && m_keyDown && m_keyPressed == SDL_SCANCODE_SPACE) // go to the menu when space bar pressed
-	//{
-	//	MenuState* temp = new MenuState(this);
-	//	temp->Load();
-
-	//	TheGame::Instance()->ChangeState(temp);
-
-	//	temp = nullptr;
-	//	m_isAlive = false;
-	//	m_isActive = false;
-
-	//	m_keyDown = false;
-
-	//	if (m_finishedGame)
-	//	{
-	//		SaveScore();
-	//	}
-
-	//	std::fstream file;
-
-	//	file.open("Data/GameRunning.txt", std::ios_base::in);
-
-	//	// Checks if the file exists
-	//	if (!file.is_open())
-	//	{
-	//		file.close();
-	//		file.open("Data/GameRunning.txt", std::ios_base::out);
-
-	//		file << "       GAME RUNNING TIME\n";
-	//		file << "-------------------------------\n";
-	//	}
-
-	//	// OUTPUTTING TIME SPENT ON GAME
-	//	file.close();
-	//	file.open("Data/GameRunning.txt", std::ios_base::app);
-	//	std::string output = "Time Spent On Game: " + std::to_string(m_timeElapsed / 1000.0f) + " seconds\n";
-	//	file << output;
-	//	file.close();
-	//}
-	//else if (!keys[SDL_SCANCODE_ESCAPE] && m_keyDown && m_keyPressed == SDL_SCANCODE_ESCAPE) // exit game
-	//{
-	//	m_isAlive = false;
-	//	m_isActive = false;
-
-	//	if (m_finishedGame)
-	//	{
-	//		SaveScore();
-	//	}
-	//}
 
 	m_timeElapsed += dt;
 }
@@ -129,7 +68,7 @@ void EndState::Draw()
 {
 	m_background.Draw();
 
-	m_finalScoreDisplay.Draw(50, 50);
+	//m_finalScoreDisplay.Draw(50, 50);
 }
 
 void EndState::Unload()
@@ -137,66 +76,4 @@ void EndState::Unload()
 	std::cout << "\nUnloading EndState\n";
 	std::cout << "---------------------------------------------------------------" << std::endl;
 	m_background.Unload();
-}
-
-void EndState::SaveScore()
-{
-	std::fstream file;
-
-	// SAVING HIGHSCORE IN A BINARY FILE
-	// First binary data stores the number of players that have played the game
-	file.open("Data/score.dat", std::ios_base::in | std::ios_base::binary);
-
-	int totalPlayers = 0;
-	if (!file.is_open()) // check if file exists or not
-	{
-		file.close();
-		file.open("Data/score.dat", std::ios_base::out | std::ios_base::binary);
-
-		file.write((char*)&totalPlayers, sizeof(int));
-
-		file.close();
-		file.open("Data/score.dat", std::ios_base::in | std::ios_base::binary);
-	}
-
-	file.read((char*)&totalPlayers, sizeof(int)); // checks for the number of players that have played the game
-
-	std::priority_queue<HighScore, std::vector<HighScore>, std::less<HighScore>> scoreArray; // puts players in a vector to be sorted later
-
-	for (int i = 0; i < totalPlayers; i++) // goes through the players saved in binary file
-	{
-		HighScore temp;
-
-		file.read((char*)&temp, sizeof(HighScore));
-
-		scoreArray.push(temp);
-	}
-
-	file.close();
-
-	totalPlayers++;
-
-	HighScore newScore;
-	newScore.score = m_finalScore;
-	newScore.playerID = totalPlayers;
-	newScore.timeSpent = m_finalTimeScore;
-	scoreArray.push(newScore);
-
-	/*scoreArray.push_back(newScore);
-
-	std::sort(scoreArray.begin(), scoreArray.end(), SortScores);*/
-
-	// Saves sorted scores
-	file.open("Data/score.dat", std::ios_base::out | std::ios_base::binary);
-
-	file.write((char*)&totalPlayers, sizeof(int));
-
-	while (!scoreArray.empty())
-	{
-		file.write((char*)&(scoreArray.top()), sizeof(HighScore));
-
-		scoreArray.pop();
-	}
-
-	file.close();
 }

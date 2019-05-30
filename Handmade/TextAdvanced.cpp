@@ -31,7 +31,7 @@ void TextAdvanced::SetText(const std::string & text)
 	m_string = text;
 	m_text.SetText(m_string);
 
-	m_text.SetSize(m_string.size() * (m_fontSize / 2.0f), m_fontSize);
+	m_text.SetSize(m_string.size() * (int)(m_fontSize / 2.0f), m_fontSize);
 }
 
 void TextAdvanced::SetColor(Uint8 r, Uint8 g, Uint8 b)
@@ -62,6 +62,11 @@ float TextAdvanced::GetTextWidth()
 size_t TextAdvanced::GetTextLength()
 {
 	return m_string.size();
+}
+
+glm::vec2 TextAdvanced::GetPosition()
+{
+	return m_position;
 }
 
 void TextAdvanced::Draw()
@@ -117,6 +122,8 @@ void TextAdvanced::Draw()
 	default:
 		break;
 	}
+
+	//m_position = calculatedPos;
 	
 	m_text.Draw((int)calculatedPos.x, (int)calculatedPos.y);
 }

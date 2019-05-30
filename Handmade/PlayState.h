@@ -13,7 +13,8 @@
 
 #include "GameState.h"
 #include "PauseState.h"
-#include "EndState.h"
+//#include "EndState.h"
+#include "SetNameState.h"
 
 //#include "Background.h"
 #include "Segment.h"

@@ -18,16 +18,6 @@
 
 #include "MenuState.h"
 
-struct HighScore
-{
-	int playerID;
-	int score;
-	float timeSpent;
-
-	bool operator<(const HighScore & rhs) const { return score < rhs.score; };
-	bool operator>(const HighScore & rhs) const { return score > rhs.score; };
-};
-
 class EndState : public GameState
 {
 public:
@@ -47,16 +37,6 @@ private:
 	int m_keyPressed;
 
 	bool m_finishedGame;
-
-	int m_finalScore;
-
-	float m_finalTimeScore;
-
-	Text m_finalScoreDisplay;
-
-	bool SortScores(HighScore left, HighScore right) { return left.score > right.score; };
-
-	void SaveScore();
 
 };
 
