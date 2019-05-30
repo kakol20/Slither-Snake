@@ -1,4 +1,5 @@
 #pragma once
+#include "GameState.h"
 
 #include <vector>
 
@@ -17,12 +18,13 @@
 
 #include "TextAdvanced.h"
 
-class MenuState : public GameState
+class PauseState :
+	public GameState
 {
 public:
-	MenuState();
-	MenuState(GameState * prevState);
-	virtual ~MenuState();
+	PauseState();
+	PauseState(GameState * prevState);
+	virtual ~PauseState();
 
 	virtual void Load();
 	virtual void Update(float dt);
@@ -31,8 +33,10 @@ public:
 
 private:
 
-	Background m_background;
+	TextAdvanced m_gamePaused;
+	TextAdvanced m_return;
+	TextAdvanced m_exit;
 
-	TextAdvanced m_title;
-	TextAdvanced m_instructions;
+	Background m_background;
 };
+

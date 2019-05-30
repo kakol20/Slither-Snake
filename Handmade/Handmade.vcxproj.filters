@@ -144,6 +144,9 @@
     <ClInclude Include="Tools.h">
       <Filter>Header Files\Own Code\Components</Filter>
     </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>Header Files\Own Code\Game States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -203,11 +206,14 @@
     <ClCompile Include="TextAdvanced.cpp">
       <Filter>Source Files\Own Code\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Segment.cpp">
-      <Filter>Source Files\Own Code\Game States</Filter>
-    </ClCompile>
     <ClCompile Include="Tools.cpp">
       <Filter>Source Files\Own Code\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Segment.cpp">
+      <Filter>Source Files\Own Code\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>Source Files\Own Code\Game States</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

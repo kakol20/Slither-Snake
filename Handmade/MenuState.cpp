@@ -16,6 +16,11 @@ MenuState::MenuState(GameState * prevState)
 	m_previousState = prevState;
 
 	m_timeElapsed = prevState->GetTimeElapsed();
+
+	m_isAlive = true;
+	m_isActive = true;
+
+	m_timeElapsed = 0.0f;
 }
 
 MenuState::~MenuState()
@@ -27,12 +32,28 @@ void MenuState::Load()
 	std::cout << "\nLoading MenuState\n";
 	std::cout << "---------------------------------------------------------------" << std::endl;
 
-	m_background.Load("Assets/Textures/Menu.png", "MENU_BG", 1600, 900);
+	m_background.Load("Assets/Textures/Menu.png", "MENU_BG", 1920, 1080);
 	m_background.SetVisible(true);
 
 	m_isAlive = true;
 	m_isActive = true;
 	//m_isVisible = true;
+
+	m_title.SetFont("INTRO_FONT");
+	m_instructions.SetFont("INTRO_FONT");
+
+	m_title.SetText("SLITHER SNAKE");
+	m_title.SetFontSize(200);
+	m_title.SetColor(200, 247, 197);
+	m_title.SetPivot(TextAdvanced::BOTTOM_MIDDLE);
+	m_title.SetPosition(TheScreen::Instance()->GetScreenSize().x / 2.0f, TheScreen::Instance()->GetScreenSize().y / 2.0f);
+
+	m_instructions.SetText("Press Space To Start");
+	float size = (m_title.GetTextWidth() / (float)m_instructions.GetTextLength()) * 2.0f;
+	m_instructions.SetFontSize((int)size);
+	m_instructions.SetColor(200, 247, 197);
+	m_instructions.SetPivot(TextAdvanced::TOP_MIDDLE);
+	m_instructions.SetPosition(TheScreen::Instance()->GetScreenSize().x / 2.0f, TheScreen::Instance()->GetScreenSize().y / 2.0f);
 }
 
 void MenuState::Update(float dt)
@@ -57,12 +78,12 @@ void MenuState::Update(float dt)
 		m_isAlive = false;
 		m_isActive = false;
 
-		EndState * temp = new EndState(this);
+		/*EndState * temp = new EndState(this);
 		temp->Load();
 
-		TheGame::Instance()->ChangeState(temp);
+		TheGame::Instance()->ChangeState(temp);*/
 
-		temp = nullptr;
+		/*temp = nullptr;*/
 	}
 
 	m_timeElapsed += dt;
@@ -71,6 +92,9 @@ void MenuState::Update(float dt)
 void MenuState::Draw()
 {
 	m_background.Draw();
+
+	m_title.Draw();
+	m_instructions.Draw();
 }
 
 void MenuState::Unload()

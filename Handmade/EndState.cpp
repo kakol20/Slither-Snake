@@ -44,7 +44,7 @@ void EndState::Load()
 	std::cout << "\nLoading EndState\n";
 	std::cout << "---------------------------------------------------------------" << std::endl;
 
-	m_background.Load("Assets/Textures/End.png", "END_BG", 1600, 900);
+	m_background.Load("Assets/Textures/End.png", "END_BG", 1920, 1080);
 	m_background.SetVisible(true);
 
 	m_isAlive = true;
@@ -61,66 +61,66 @@ void EndState::Update(float dt)
 {
 	const Uint8* keys = TheInput::Instance()->GetKeyStates();
 
-	if (keys[SDL_SCANCODE_SPACE] && !m_keyDown) // to avoid key holding effecting the next game state
-	{
-		m_keyDown = true;
-		m_keyPressed = SDL_SCANCODE_SPACE;
-	}
-	else if (keys[SDL_SCANCODE_ESCAPE] && !m_keyDown)
-	{
-		m_keyDown = true;
-		m_keyPressed = SDL_SCANCODE_ESCAPE;
-	}
+	//if (keys[SDL_SCANCODE_SPACE] && !m_keyDown) // to avoid key holding effecting the next game state
+	//{
+	//	m_keyDown = true;
+	//	m_keyPressed = SDL_SCANCODE_SPACE;
+	//}
+	//else if (keys[SDL_SCANCODE_ESCAPE] && !m_keyDown)
+	//{
+	//	m_keyDown = true;
+	//	m_keyPressed = SDL_SCANCODE_ESCAPE;
+	//}
 
-	if (!keys[SDL_SCANCODE_SPACE] && m_keyDown && m_keyPressed == SDL_SCANCODE_SPACE) // go to the menu when space bar pressed
-	{
-		MenuState* temp = new MenuState(this);
-		temp->Load();
+	//if (!keys[SDL_SCANCODE_SPACE] && m_keyDown && m_keyPressed == SDL_SCANCODE_SPACE) // go to the menu when space bar pressed
+	//{
+	//	MenuState* temp = new MenuState(this);
+	//	temp->Load();
 
-		TheGame::Instance()->ChangeState(temp);
+	//	TheGame::Instance()->ChangeState(temp);
 
-		temp = nullptr;
-		m_isAlive = false;
-		m_isActive = false;
+	//	temp = nullptr;
+	//	m_isAlive = false;
+	//	m_isActive = false;
 
-		m_keyDown = false;
+	//	m_keyDown = false;
 
-		if (m_finishedGame)
-		{
-			SaveScore();
-		}
+	//	if (m_finishedGame)
+	//	{
+	//		SaveScore();
+	//	}
 
-		std::fstream file;
+	//	std::fstream file;
 
-		file.open("Data/GameRunning.txt", std::ios_base::in);
+	//	file.open("Data/GameRunning.txt", std::ios_base::in);
 
-		// Checks if the file exists
-		if (!file.is_open())
-		{
-			file.close();
-			file.open("Data/GameRunning.txt", std::ios_base::out);
+	//	// Checks if the file exists
+	//	if (!file.is_open())
+	//	{
+	//		file.close();
+	//		file.open("Data/GameRunning.txt", std::ios_base::out);
 
-			file << "       GAME RUNNING TIME\n";
-			file << "-------------------------------\n";
-		}
+	//		file << "       GAME RUNNING TIME\n";
+	//		file << "-------------------------------\n";
+	//	}
 
-		// OUTPUTTING TIME SPENT ON GAME
-		file.close();
-		file.open("Data/GameRunning.txt", std::ios_base::app);
-		std::string output = "Time Spent On Game: " + std::to_string(m_timeElapsed / 1000.0f) + " seconds\n";
-		file << output;
-		file.close();
-	}
-	else if (!keys[SDL_SCANCODE_ESCAPE] && m_keyDown && m_keyPressed == SDL_SCANCODE_ESCAPE) // exit game
-	{
-		m_isAlive = false;
-		m_isActive = false;
+	//	// OUTPUTTING TIME SPENT ON GAME
+	//	file.close();
+	//	file.open("Data/GameRunning.txt", std::ios_base::app);
+	//	std::string output = "Time Spent On Game: " + std::to_string(m_timeElapsed / 1000.0f) + " seconds\n";
+	//	file << output;
+	//	file.close();
+	//}
+	//else if (!keys[SDL_SCANCODE_ESCAPE] && m_keyDown && m_keyPressed == SDL_SCANCODE_ESCAPE) // exit game
+	//{
+	//	m_isAlive = false;
+	//	m_isActive = false;
 
-		if (m_finishedGame)
-		{
-			SaveScore();
-		}
-	}
+	//	if (m_finishedGame)
+	//	{
+	//		SaveScore();
+	//	}
+	//}
 
 	m_timeElapsed += dt;
 }

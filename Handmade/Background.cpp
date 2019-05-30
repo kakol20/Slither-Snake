@@ -17,6 +17,19 @@ void Background::Load(const std::string & file, const std::string & textureID, i
 	TheTexture::Instance()->LoadTextureFromFile(file, textureID);
 	TheAudio::Instance()->LoadFromFile("Assets/Audio/Hiding_Your_Reality.ogg", AudioManager::MUSIC_AUDIO, "BGM");
 
+	float newWidth = (float)width;
+	float newHeight = (float)height;
+
+	if ((newWidth / 16.0f) * newHeight < newHeight)
+	{
+		newWidth = (newHeight / 9.0f) * newWidth;
+	}
+
+	if ((newHeight / 9.0f) * newWidth < newWidth)
+	{
+		newHeight = (newWidth / 16.0f) * newHeight;
+	}
+
 	//SetTag("BG");
 	m_tag = textureID;
 	SetTexture(textureID);
@@ -45,7 +58,11 @@ void Background::Draw()
 {
 	if (m_isVisible)
 	{
-		m_background.Draw();
+		glm::vec2 position = glm::vec2(TheScreen::Instance()->GetScreenSize().x, TheScreen::Instance()->GetScreenSize().y);
+		position = position / 2.0f;
+		glm::vec2 calculatedPos = m_size / 2.0f;
+		calculatedPos = position - calculatedPos;
+		m_background.Draw((int)calculatedPos.x, (int)calculatedPos.y);
 	}
 }
 

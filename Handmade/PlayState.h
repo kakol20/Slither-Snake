@@ -12,7 +12,7 @@
 #include "TextureManager.h"
 
 #include "GameState.h"
-
+#include "PauseState.h"
 #include "EndState.h"
 
 //#include "Background.h"
@@ -52,8 +52,12 @@ private:
 	float m_elapsedTimePS;
 	float m_cumulativeDT;
 
+	bool m_gameOver;
+
 	TextAdvanced m_timeDisplay;
 	TextAdvanced m_scoreDisplay;
 	TextAdvanced m_gameOverDisplay;
 	TextAdvanced m_objectiveDisplay;
+
+	Background m_background;
 };
