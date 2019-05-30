@@ -141,6 +141,9 @@
     <ClInclude Include="TextAdvanced.h">
       <Filter>Header Files\Own Code\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Tools.h">
+      <Filter>Header Files\Own Code\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -185,9 +188,6 @@
     <ClCompile Include="Background.cpp">
       <Filter>Source Files\Own Code\Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Segment.cpp">
-      <Filter>Source Files\Own Code\Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="EndState.cpp">
       <Filter>Source Files\Own Code\Game States</Filter>
     </ClCompile>
@@ -201,6 +201,12 @@
       <Filter>Source Files\Own Code\Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="TextAdvanced.cpp">
+      <Filter>Source Files\Own Code\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Segment.cpp">
+      <Filter>Source Files\Own Code\Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools.cpp">
       <Filter>Source Files\Own Code\Components</Filter>
     </ClCompile>
   </ItemGroup>

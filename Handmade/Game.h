@@ -4,14 +4,20 @@
 #include <SDL.h>
 #include <string>
 #include <deque>
+#include <vector>
+#include <map>
+#include <fstream>
+#include <iostream>
 
 #include "Singleton.h"
 #include "AudioManager.h"
 #include "InputManager.h"
 #include "ScreenManager.h"
 #include "TextureManager.h"
+#include "Tools.h"
 
 #include "GameState.h"
+
 
 class Game
 {
@@ -19,7 +25,7 @@ public:
 
 	friend class Singleton<Game>;
 
-	bool Initialise(const std::string & name, int screenWidth, int screenHeight, bool fullscreen = false);
+	bool Initialise(const std::string & gameData);
 	bool Run();
 	void Shutdown();
 
@@ -33,6 +39,8 @@ private:
 	Game & operator=(const Game & copyGame);
 
 	std::deque<GameState*> m_states;
+
+	std::map<std::string, std::string> m_gameData;
 
 	void RemoveState();
 

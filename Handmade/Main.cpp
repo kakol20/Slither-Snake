@@ -12,7 +12,7 @@
 int main(int argc, char* args[])
 {
 
-	if (!TheGame::Instance()->Initialise("Slither Snake", 1600, 900))
+	if (!TheGame::Instance()->Initialise("Data/Game.ini"))
 	{
 		return -1;
 	}

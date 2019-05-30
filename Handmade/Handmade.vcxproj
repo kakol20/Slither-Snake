@@ -151,6 +151,7 @@
     <ClInclude Include="Text.h" />
     <ClInclude Include="TextAdvanced.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Tools.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TextAdvanced.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

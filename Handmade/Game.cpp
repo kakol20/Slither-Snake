@@ -5,8 +5,33 @@ Game::Game()
 	m_deltaTime = 0.0f;
 }
 
-bool Game::Initialise(const std::string & name, int screenWidth, int screenHeight, bool fullscreen)
+bool Game::Initialise(const std::string & gameData)
 {
+
+	std::fstream dataFile(gameData, std::ios_base::in);
+
+	if (!dataFile.is_open())
+	{
+		std::cout << gameData << " location not found" << std::endl;
+
+		return false;
+	}
+
+	while (!dataFile.eof())
+	{
+		std::vector<std::string> subString;
+		std::string lineString;
+
+		std::getline(dataFile, lineString);
+		ParseString(subString, lineString, "=");
+		m_gameData[subString[0]] = subString[1];
+	}
+
+	std::string name = m_gameData["name"];
+	int screenWidth = std::stoi(m_gameData["width"]);
+	int screenHeight = std::stoi(m_gameData["height"]);
+	bool fullscreen = std::stoi(m_gameData["fullscreen"]);
+
 	//initialise game screen and background rendering color
 	if (!TheScreen::Instance()->Initialize(name.c_str(), screenWidth, screenHeight, fullscreen))
 	{
