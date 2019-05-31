@@ -89,9 +89,18 @@ void PlayState::Update(float dt)
 
 	if (m_isActive)
 	{
-		if (keys[SDL_SCANCODE_ESCAPE])
+		// keys must be pressed and not held down to prevent keys from affecting other states
+
+		if (keys[SDL_SCANCODE_ESCAPE] && !m_keyDown)
+		{
+			m_keyDown = false;
+			m_keyPressed = SDL_SCANCODE_ESCAPE;
+		}
+
+		if (!keys[SDL_SCANCODE_ESCAPE] && m_keyDown && m_keyPressed == SDL_SCANCODE_ESCAPE)
 		{
 			m_isActive = false;
+			m_keyDown = false;
 
 			PauseState * temp = new PauseState(this);
 			temp->Load();

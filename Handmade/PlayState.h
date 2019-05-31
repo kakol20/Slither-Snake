@@ -54,6 +54,9 @@ private:
 	float m_cumulativeDT;
 
 	bool m_gameOver;
+	
+	bool m_keyDown;
+	SDL_Scancode m_keyPressed;
 
 	TextAdvanced m_timeDisplay;
 	TextAdvanced m_scoreDisplay;

@@ -7,7 +7,7 @@ EndState::EndState()
 	m_previousState = nullptr;
 	m_keyDown = false;
 
-	m_keyPressed = 0;
+	//m_keyPressed = 0;
 
 	//m_finalScore = 0;
 }
@@ -17,7 +17,7 @@ EndState::EndState(GameState* prevState)
 	m_previousState = prevState;
 	m_keyDown = false;
 
-	m_keyPressed = 0;
+	//m_keyPressed = 0;
 
 
 	m_timeElapsed = prevState->GetTimeElapsed();
@@ -67,7 +67,15 @@ void EndState::Update(float dt)
 {
 	const Uint8* keys = TheInput::Instance()->GetKeyStates();
 
-	if (keys[SDL_SCANCODE_ESCAPE])
+	// keys must be pressed and not held down to prevent keys from affecting other states
+
+	if (keys[SDL_SCANCODE_ESCAPE] && !m_keyDown)
+	{
+		m_keyDown = true;
+		m_keyPressed = SDL_SCANCODE_ESCAPE;
+	}
+
+	if (!keys[SDL_SCANCODE_ESCAPE] && m_keyDown && m_keyPressed == SDL_SCANCODE_ESCAPE)
 	{
 		m_isAlive = false;
 		m_isActive = false;

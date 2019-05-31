@@ -50,9 +50,6 @@ bool Game::Initialise(const std::string & gameData)
 		return false;
 	}
 
-	//m_gameState.Load()
-	//m_states.front()->Load();
-
 	TheTexture::Instance()->LoadFontFromFile("Assets/Fonts/Intro.otf", 600, "INTRO_FONT");
 
 	return true;
@@ -87,16 +84,12 @@ bool Game::Run()
 	{
 		return false;
 	}
-/*
-  	if (m_states.front()->IsActive())
-	{
-		m_states.front()->Update(m_deltaTime);
-	}
-*/
+
 	m_states.front()->Update(m_deltaTime);
 
 	m_states.front()->Draw();
 
+	// check if playstate needs to be closedsa
 	if (!m_states.front()->IsAlive())
 	{
 		RemoveState();

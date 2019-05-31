@@ -90,6 +90,7 @@ void SetNameState::Update(float dt)
 
 	const Uint8 * keys = TheInput::Instance()->GetKeyStates();
 
+	// keys must be pressed and not held down to prevent keys from affecting other states
 	if (keys[SDL_SCANCODE_LEFT] && !m_keyHeld)
 	{
 		m_keyHeld = true;

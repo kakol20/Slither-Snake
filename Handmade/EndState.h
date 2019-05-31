@@ -39,7 +39,7 @@ private:
 	TextAdvanced m_gameOver;
 
 	bool m_keyDown;
-	int m_keyPressed;
+	SDL_Scancode m_keyPressed;
 
 	bool m_finishedGame;
 

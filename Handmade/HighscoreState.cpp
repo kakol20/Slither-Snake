@@ -59,7 +59,6 @@ HighscoreState::HighscoreState(GameState * prevState)
 	{
 		// if at end of file then break
 		std::streampos gPos = file.tellg();
-
 		if (gPos >= sizeOfFile) break;
 		
 		unsigned int cumulativeSize = sizeof(size_t) + sizeof(int);
@@ -116,9 +115,9 @@ HighscoreState::HighscoreState(GameState * prevState)
 		size_t size = (*it).playerName.size() * sizeof(char);
 		int score = (*it).score;
 
-		file.write((char*)&size, sizeof(size_t));
-		file.write(name.c_str(), size);
-		file.write((char*)&score, sizeof(int));
+		file.write((char*)&size, sizeof(size_t)); // save length of string
+		file.write(name.c_str(), size); // save string
+		file.write((char*)&score, sizeof(int)); // save score
 	}
 	file.close();
 }
@@ -173,6 +172,8 @@ void HighscoreState::Load()
 void HighscoreState::Update(float dt)
 {
 	const Uint8* keys = TheInput::Instance()->GetKeyStates();
+
+	// keys must be pressed and not held down to prevent keys from affecting other states
 
 	// check if want to continue
 	if (keys[SDL_SCANCODE_SPACE] && !m_keyDown)
