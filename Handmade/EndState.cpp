@@ -19,17 +19,6 @@ EndState::EndState(GameState* prevState)
 
 	m_keyPressed = 0;
 
-	////m_finalScore = 0;
-
-	m_finishedGame = false;
-
-	/*if (dynamic_cast<PlayState*>(prevState))
-	{
-		m_finalScore = dynamic_cast<PlayState*>(prevState)->GetScore();
-		m_finalTimeScore = dynamic_cast<PlayState*>(prevState)->GetTimeScore();
-
-		m_finishedGame = true;
-	}*/
 
 	m_timeElapsed = prevState->GetTimeElapsed();
 }
@@ -50,16 +39,51 @@ void EndState::Load()
 	m_isAlive = true;
 	m_isActive = true;
 
-	/*m_finalScoreDisplay.SetFont("INTRO_FONT");
-	m_finalScoreDisplay.SetColor(255, 255, 255);
-	std::string finalScoreText = "Final Score: " + std::to_string(m_finalScore);
-	m_finalScoreDisplay.SetSize(25 * finalScoreText.size(), 50);
-	m_finalScoreDisplay.SetText(finalScoreText);*/
+	m_gameOver.SetFont("INTRO_FONT");
+	m_gameOver.SetText("Game Over!");
+	m_gameOver.SetFontSize(200);
+	m_gameOver.SetColor(255, 250, 205);
+	m_gameOver.SetPivot(TextAdvanced::BOTTOM_MIDDLE);
+	m_gameOver.SetPosition(TheScreen::Instance()->GetScreenSize().x / 2.0f, TheScreen::Instance()->GetScreenSize().y / 2.0f);
+
+	m_restart.SetFont("INTRO_FONT");
+	m_restart.SetText("Tab To Restart Game");
+	float size = (m_gameOver.GetTextWidth() / (float)m_restart.GetTextLength()) * 2.0f;
+	m_restart.SetFontSize((int)size);
+	m_restart.SetColor(255, 250, 205);
+	m_restart.SetPivot(TextAdvanced::TOP_MIDDLE);
+	m_restart.SetPosition(TheScreen::Instance()->GetScreenSize().x / 2.0f, TheScreen::Instance()->GetScreenSize().y / 2.0f);
+
+	m_exit.SetFont("INTRO_FONT");
+	m_exit.SetText("Escape To Exit Game");
+	size = (m_restart.GetTextWidth() / (float)m_exit.GetTextLength()) * 2.0f;
+	m_exit.SetFontSize((int)size);
+	m_exit.SetColor(255, 250, 205);
+	m_exit.SetPivot(TextAdvanced::TOP_MIDDLE);
+	m_exit.SetPosition(TheScreen::Instance()->GetScreenSize().x / 2.0f, (TheScreen::Instance()->GetScreenSize().y / 2.0f) + (float)m_restart.GetTextSize());
 }
 
 void EndState::Update(float dt)
 {
 	const Uint8* keys = TheInput::Instance()->GetKeyStates();
+
+	if (keys[SDL_SCANCODE_ESCAPE])
+	{
+		m_isAlive = false;
+		m_isActive = false;
+	}
+
+	if (keys[SDL_SCANCODE_TAB])
+	{
+		MenuState * temp = new MenuState(this);
+		temp->Load();
+
+		m_isAlive = false;
+		m_isActive = false;
+
+		TheGame::Instance()->ChangeState(temp);
+		temp = nullptr;
+	}
 
 	m_timeElapsed += dt;
 }
@@ -68,7 +92,9 @@ void EndState::Draw()
 {
 	m_background.Draw();
 
-	//m_finalScoreDisplay.Draw(50, 50);
+	m_gameOver.Draw();
+	m_restart.Draw();
+	m_exit.Draw();
 }
 
 void EndState::Unload()

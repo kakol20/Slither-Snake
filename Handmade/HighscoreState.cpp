@@ -196,7 +196,7 @@ void HighscoreState::Update(float dt)
 		m_isActive = false;
 	}
 
-	if (m_highScoreDisplayMax < m_scores.size())
+	if (m_highScoreDisplayMax < (int)m_scores.size())
 	{
 		int offSetIndex = 0;
 
@@ -231,7 +231,7 @@ void HighscoreState::Update(float dt)
 
 			offSetIndex++;
 
-			if (m_bottomIndex + offSetIndex >= m_scores.size())
+			if (m_bottomIndex + offSetIndex >= (int)m_scores.size())
 			{
 				offSetIndex = 0;
 			}
@@ -254,7 +254,7 @@ void HighscoreState::Draw()
 	
 	m_title.Draw();
 
-	if (m_highScoreDisplayMax < m_scores.size())
+	if (m_highScoreDisplayMax < (int)m_scores.size())
 	{
 		for (int i = m_topIndex; i <= m_bottomIndex; i++)
 		{
@@ -268,10 +268,6 @@ void HighscoreState::Draw()
 			(*it)->Draw();
 		}
 	}
-
-	
-
-	
 
 	m_spaceTo.Draw();
 }

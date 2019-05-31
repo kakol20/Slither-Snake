@@ -76,13 +76,27 @@ Segment::Segment(glm::vec3 position) // parameter of where the segment will spaw
 	m_textureTag = "SEGMENT";
 	m_texture.SetTexture("SEGMENT");
 
-	m_size = glm::vec2(40.0f);
+	std::fstream file("Data/Segment.txt", std::ios_base::in);
+	std::map<std::string, std::string> data;
+
+	while (!file.eof())
+	{
+		std::vector<std::string> subStr;
+		std::string lineStr;
+
+		std::getline(file, lineStr);
+		ParseString(subStr, lineStr, "=");
+		data[subStr[0]] = subStr[1];
+	}
+	file.close();
+
+	m_size = glm::vec2(std::stof(data["size"]));
 	m_textureSize = glm::vec2(500.0f);
 	m_texture.SetSpriteDimension((int)m_size.x, (int)m_size.y);
 
 	m_texture.SetTextureDimension(1, 1, 500, 500);
 
-	m_speed = 8.0f;
+	m_speed = std::stof(data["speed"]);
 
 	s_totalSegments++;
 

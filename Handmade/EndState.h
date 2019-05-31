@@ -1,17 +1,18 @@
 #pragma once
 
 #include <string>
-#include <fstream>
+//#include <fstream>
 #include <iostream>
-#include <algorithm>
-#include <queue>
-#include <vector>
+//#include <algorithm>
+//#include <queue>
+//#include <vector>
 //#include <deque>
 
 #include "GameState.h"
 
 #include "InputManager.h"
 #include "TextureManager.h"
+#include "ScreenManager.h"
 #include "Text.h"
 
 #include "Background.h"
@@ -32,6 +33,10 @@ public:
 
 private:
 	Background m_background;
+
+	TextAdvanced m_exit;
+	TextAdvanced m_restart;
+	TextAdvanced m_gameOver;
 
 	bool m_keyDown;
 	int m_keyPressed;

@@ -8,10 +8,14 @@
 #include "AudioManager.h"
 #include "TextureManager.h"
 #include "ScreenManager.h"
+#include "Tools.h"
 
 #include <SDL.h>
+#include <fstream>
 #include <iostream>
 #include <string>
+#include <map>
+#include <vector>
 
 class Background : public GameObject
 {

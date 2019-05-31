@@ -15,7 +15,22 @@ Background::~Background()
 void Background::Load(const std::string & file, const std::string & textureID, int width, int height)
 {
 	TheTexture::Instance()->LoadTextureFromFile(file, textureID);
-	TheAudio::Instance()->LoadFromFile("Assets/Audio/Hiding_Your_Reality.ogg", AudioManager::MUSIC_AUDIO, "BGM");
+
+	std::fstream dataFile("Data/Game.ini", std::ios_base::in);
+	std::map<std::string, std::string> data;
+
+	while (!dataFile.eof())
+	{
+		std::vector<std::string> subStr;
+		std::string lineStr;
+
+		std::getline(dataFile, lineStr);
+		ParseString(subStr, lineStr, "=");
+		data[subStr[0]] = subStr[1];
+	}
+	dataFile.close();
+
+	TheAudio::Instance()->LoadFromFile(data["BGM"], AudioManager::MUSIC_AUDIO, "BGM");
 
 	float newWidth = (float)width;
 	float newHeight = (float)height;

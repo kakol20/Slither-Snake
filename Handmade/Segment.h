@@ -5,12 +5,17 @@
 #include <glm.hpp>
 #include <math.h>
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <map>
 
 #include "Sprite.h"
 #include "TextureManager.h"
 #include "InputManager.h"
 
 #include "Sphere.h"
+
+#include "Tools.h"
 
 class Segment : public GameObject
 {
